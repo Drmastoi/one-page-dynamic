@@ -499,27 +499,27 @@ export default function AdditionalSections({ formData, handleInputChange }: Addi
       <Card id="section-11" className="p-6 bg-form-section border-form-section-border">
         <h2 className="text-2xl font-semibold mb-6 text-primary">Section 11: Impact on Life</h2>
         <div className="space-y-4">
-          <div className="grid md:grid-cols-2 gap-4">
-            <FormField label="How many days did you take off work because of the accident?" field="daysOffWork" required>
-              <Input
-                type="number"
-                min="0"
-                value={formData.daysOffWork || ''}
-                onChange={(e) => handleInputChange('daysOffWork', e.target.value)}
-                placeholder="Enter number of days"
-              />
-            </FormField>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+          <FormField label="How many days did you take off work because of the accident?" field="daysOffWork" required>
+            <Input
+              type="number"
+              min="0"
+              value={formData.daysOffWork || ''}
+              onChange={(e) => handleInputChange('daysOffWork', e.target.value)}
+              placeholder="Enter number of days"
+            />
+          </FormField>
 
-            <FormField label="How many days of light duties or reduced hours did you take?" field="lightDutyDays">
-              <Input
-                type="number"
-                min="0"
-                value={formData.lightDutyDays || ''}
-                onChange={(e) => handleInputChange('lightDutyDays', e.target.value)}
-                placeholder="Enter number of days"
-              />
-            </FormField>
-          </div>
+          <FormField label="How many days of light duties or reduced hours did you take?" field="lightDutyDays">
+            <Input
+              type="number"
+              min="0"
+              value={formData.lightDutyDays || ''}
+              onChange={(e) => handleInputChange('lightDutyDays', e.target.value)}
+              placeholder="Enter number of days"
+            />
+          </FormField>
+        </div>
 
           <FormField label="What are the things that are hard to do at work?" field="workDifficulties">
             <Textarea

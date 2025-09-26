@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
+import { useIsMobile } from '@/hooks/use-mobile';
+import { Menu, X } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 interface NavItem {
   id: string;
@@ -24,6 +27,8 @@ const navItems: NavItem[] = [
 
 export default function NavigationMenu() {
   const [activeSection, setActiveSection] = useState('section-1');
+  const [isOpen, setIsOpen] = useState(false);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -59,9 +64,81 @@ export default function NavigationMenu() {
         block: 'start',
         inline: 'nearest' 
       });
+      if (isMobile) {
+        setIsOpen(false);
+      }
     }
   };
 
+  if (isMobile) {
+    return (
+      <>
+        {/* Mobile Menu Button */}
+        <Button
+          onClick={() => setIsOpen(!isOpen)}
+          className="fixed top-4 right-4 z-50 w-12 h-12 rounded-full shadow-lg"
+          size="sm"
+        >
+          {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+        </Button>
+
+        {/* Mobile Menu Overlay */}
+        {isOpen && (
+          <>
+            <div 
+              className="fixed inset-0 bg-black/50 z-40"
+              onClick={() => setIsOpen(false)}
+            />
+            <div className="fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-nav/95 backdrop-blur-sm shadow-xl z-50 overflow-y-auto">
+              <div className="p-6 pt-20">
+                <h3 className="text-nav-foreground font-semibold text-lg mb-6">
+                  Questionnaire Sections
+                </h3>
+                
+                <div className="space-y-2">
+                  {navItems.map((item) => (
+                    <button
+                      key={item.id}
+                      onClick={() => scrollToSection(item.id)}
+                      className={cn(
+                        "w-full text-left px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200",
+                        activeSection === item.id
+                          ? "bg-nav-active text-white shadow-md"
+                          : "text-nav-foreground hover:bg-nav-hover hover:text-white"
+                      )}
+                    >
+                      <div className="flex items-center space-x-4">
+                        <div 
+                          className={cn(
+                            "w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold transition-colors flex-shrink-0",
+                            activeSection === item.id
+                              ? "bg-white text-nav-active"
+                              : "bg-nav-foreground/20 text-nav-foreground"
+                          )}
+                        >
+                          {item.number}
+                        </div>
+                        <span className="text-sm leading-tight">{item.title}</span>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+
+                <div className="mt-8 pt-6 border-t border-nav-foreground/20">
+                  <div className="text-nav-foreground/70 text-sm text-center">
+                    <div className="mb-1">Personal Injury</div>
+                    <div className="font-semibold">Questionnaire</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </>
+        )}
+      </>
+    );
+  }
+
+  // Desktop Menu
   return (
     <div className="fixed right-6 top-1/2 transform -translate-y-1/2 z-50 w-64">
       <nav className="bg-nav/95 backdrop-blur-sm rounded-lg shadow-lg border border-nav/20 p-4 max-h-[80vh] overflow-y-auto w-full">

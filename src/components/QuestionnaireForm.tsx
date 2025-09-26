@@ -215,7 +215,7 @@ Submitted on: ${new Date().toLocaleString()}
       {/* Section 1: Personal Information */}
       <Card id="section-1" className="p-6 bg-form-section border-form-section-border">
         <h2 className="text-2xl font-semibold mb-6 text-primary">Section 1: Personal Information</h2>
-        <div className="grid md:grid-cols-2 gap-4 space-y-4 md:space-y-0">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 space-y-0">
           <FormField label="Full Name" field="fullName" required>
             <Input
               value={formData.fullName || ''}
@@ -265,7 +265,7 @@ Submitted on: ${new Date().toLocaleString()}
             />
           </FormField>
 
-          <div className="grid md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <FormField label="Occupation at Time of Accident" field="occupation" required>
               <Input
                 value={formData.occupation || ''}
@@ -287,7 +287,7 @@ Submitted on: ${new Date().toLocaleString()}
             </FormField>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <FormField label="Who Lives with You at Home" field="livingWith">
               <Select onValueChange={(value) => handleInputChange('livingWith', value)}>
                 <SelectTrigger>
@@ -322,7 +322,7 @@ Submitted on: ${new Date().toLocaleString()}
       <Card id="section-2" className="p-6 bg-form-section border-form-section-border">
         <h2 className="text-2xl font-semibold mb-6 text-primary">Section 2: Accident Details</h2>
         <div className="space-y-4">
-          <div className="grid md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <FormField label="Date of Accident" field="accidentDate" required>
               <Input
                 type="date"
@@ -346,7 +346,7 @@ Submitted on: ${new Date().toLocaleString()}
             </FormField>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <FormField label="Your Position in Vehicle" field="vehiclePosition" required>
               <Select onValueChange={(value) => handleInputChange('vehiclePosition', value)}>
                 <SelectTrigger>
@@ -376,7 +376,7 @@ Submitted on: ${new Date().toLocaleString()}
             </FormField>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <FormField label="Vehicle Location at Time of Accident" field="vehicleLocation" required>
               <Select onValueChange={(value) => handleInputChange('vehicleLocation', value)}>
                 <SelectTrigger>
@@ -406,7 +406,7 @@ Submitted on: ${new Date().toLocaleString()}
             </FormField>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <FormField label="Where was Impact on Your Vehicle" field="impactLocation" required>
               <Select onValueChange={(value) => handleInputChange('impactLocation', value)}>
                 <SelectTrigger>
@@ -435,7 +435,7 @@ Submitted on: ${new Date().toLocaleString()}
             </FormField>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <FormField label="Were You Wearing Seatbelt" field="wearingSeatbelt" required>
               <Select onValueChange={(value) => handleInputChange('wearingSeatbelt', value)}>
                 <SelectTrigger>
@@ -461,7 +461,7 @@ Submitted on: ${new Date().toLocaleString()}
             </FormField>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <FormField label="Vehicle Damage Caused" field="vehicleDamage" required>
               <Select onValueChange={(value) => handleInputChange('vehicleDamage', value)}>
                 <SelectTrigger>
@@ -526,7 +526,7 @@ Submitted on: ${new Date().toLocaleString()}
 
           {formData.neckPain === 'yes' && (
             <>
-              <div className="grid md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <FormField label="Which side of neck?" field="neckSide">
                   <Select onValueChange={(value) => handleInputChange('neckSide', value)}>
                     <SelectTrigger>
@@ -554,7 +554,7 @@ Submitted on: ${new Date().toLocaleString()}
                 </FormField>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <FormField label="Initial severity of pain" field="neckInitialSeverity">
                   <Select onValueChange={(value) => handleInputChange('neckInitialSeverity', value)}>
                     <SelectTrigger>
@@ -619,7 +619,7 @@ Submitted on: ${new Date().toLocaleString()}
 
           {formData.shoulderPain === 'yes' && (
             <>
-              <div className="grid md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 <FormField label="Which side of shoulder?" field="shoulderSide">
                   <Select onValueChange={(value) => handleInputChange('shoulderSide', value)}>
                     <SelectTrigger>
@@ -647,7 +647,7 @@ Submitted on: ${new Date().toLocaleString()}
                 </FormField>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 <FormField label="Initial severity of pain" field="shoulderInitialSeverity">
                   <Select onValueChange={(value) => handleInputChange('shoulderInitialSeverity', value)}>
                     <SelectTrigger>
