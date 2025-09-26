@@ -63,10 +63,10 @@ export default function NavigationMenu() {
   };
 
   return (
-    <div className="fixed right-6 top-1/2 transform -translate-y-1/2 z-50">
-      <nav className="bg-nav/95 backdrop-blur-sm rounded-lg shadow-lg border border-nav/20 p-4 max-h-[80vh] overflow-y-auto">
+    <div className="fixed right-6 top-1/2 transform -translate-y-1/2 z-50 w-64">
+      <nav className="bg-nav/95 backdrop-blur-sm rounded-lg shadow-lg border border-nav/20 p-4 max-h-[80vh] overflow-y-auto w-full">
         <div className="space-y-1">
-          <h3 className="text-nav-foreground font-semibold text-sm mb-3 px-2">
+          <h3 className="text-nav-foreground font-semibold text-sm mb-3 px-2 whitespace-nowrap">
             Questionnaire Sections
           </h3>
           
@@ -84,7 +84,7 @@ export default function NavigationMenu() {
               <div className="flex items-center space-x-3">
                 <div 
                   className={cn(
-                    "w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold transition-colors",
+                    "w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold transition-colors flex-shrink-0",
                     activeSection === item.id
                       ? "bg-white text-nav-active"
                       : "bg-nav-foreground/20 text-nav-foreground group-hover:bg-white group-hover:text-nav-hover"
@@ -92,7 +92,7 @@ export default function NavigationMenu() {
                 >
                   {item.number}
                 </div>
-                <span className="text-xs leading-tight">{item.title}</span>
+                <span className="text-xs leading-tight truncate">{item.title}</span>
               </div>
             </button>
           ))}
