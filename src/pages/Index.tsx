@@ -6,7 +6,14 @@ const Index = () => {
   const isMobile = useIsMobile();
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 relative">
+      {/* Background pattern for glass effect visibility */}
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute top-20 left-10 w-32 h-32 bg-blue-400 rounded-full blur-xl"></div>
+        <div className="absolute top-40 right-20 w-24 h-24 bg-purple-400 rounded-full blur-xl"></div>
+        <div className="absolute bottom-40 left-1/4 w-40 h-40 bg-pink-400 rounded-full blur-xl"></div>
+        <div className="absolute bottom-20 right-1/3 w-28 h-28 bg-green-400 rounded-full blur-xl"></div>
+      </div>
       <NavigationMenu />
       
       <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
