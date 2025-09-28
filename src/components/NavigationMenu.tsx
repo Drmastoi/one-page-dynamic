@@ -89,9 +89,9 @@ export default function NavigationMenu() {
               className="fixed inset-0 bg-black/50 z-40"
               onClick={() => setIsOpen(false)}
             />
-            <div className="fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-nav/95 backdrop-blur-sm shadow-xl z-50 overflow-y-auto">
+            <div className="fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-white/5 backdrop-blur-xl shadow-2xl border-l border-white/10 z-50 overflow-y-auto">
               <div className="p-6 pt-20">
-                <h3 className="text-nav-foreground font-semibold text-lg mb-6">
+                <h3 className="text-white/90 font-semibold text-lg mb-6">
                   Questionnaire Sections
                 </h3>
                 
@@ -103,8 +103,8 @@ export default function NavigationMenu() {
                       className={cn(
                         "w-full text-left px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200",
                         activeSection === item.id
-                          ? "bg-nav-active text-white shadow-md"
-                          : "text-nav-foreground hover:bg-nav-hover hover:text-white"
+                          ? "bg-white/20 text-white shadow-md backdrop-blur-sm"
+                          : "text-white/80 hover:bg-white/10 hover:text-white"
                       )}
                     >
                       <div className="flex items-center space-x-4">
@@ -112,8 +112,8 @@ export default function NavigationMenu() {
                           className={cn(
                             "w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold transition-colors flex-shrink-0",
                             activeSection === item.id
-                              ? "bg-white text-nav-active"
-                              : "bg-nav-foreground/20 text-nav-foreground"
+                              ? "bg-white text-primary"
+                              : "bg-white/20 text-white"
                           )}
                         >
                           {item.number}
@@ -124,8 +124,8 @@ export default function NavigationMenu() {
                   ))}
                 </div>
 
-                <div className="mt-8 pt-6 border-t border-nav-foreground/20">
-                  <div className="text-nav-foreground/70 text-sm text-center">
+                <div className="mt-8 pt-6 border-t border-white/20">
+                  <div className="text-white/60 text-sm text-center">
                     <div className="mb-1">Personal Injury</div>
                     <div className="font-semibold">Questionnaire</div>
                   </div>
@@ -141,9 +141,9 @@ export default function NavigationMenu() {
   // Desktop Menu
   return (
     <div className="fixed right-4 top-1/2 transform -translate-y-1/2 z-50 w-48">
-      <nav className="bg-nav/20 backdrop-blur-md rounded-lg shadow-sm border border-nav/10 p-2 max-h-[80vh] overflow-y-auto w-full">
+      <nav className="bg-white/5 backdrop-blur-xl rounded-xl shadow-2xl border border-white/10 p-2 max-h-[80vh] overflow-y-auto w-full">
         <div className="space-y-0.5">
-          <h3 className="text-nav-foreground/80 font-medium text-xs mb-2 px-1 whitespace-nowrap opacity-70">
+          <h3 className="text-white/80 font-medium text-xs mb-2 px-1 whitespace-nowrap">
             Sections
           </h3>
           
@@ -152,10 +152,10 @@ export default function NavigationMenu() {
               key={item.id}
               onClick={() => scrollToSection(item.id)}
               className={cn(
-                "w-full text-left px-3 py-2.5 rounded-md text-sm font-medium transition-all duration-200 hover:bg-nav-hover group",
+                "w-full text-left px-3 py-2.5 rounded-md text-sm font-medium transition-all duration-200 group",
                 activeSection === item.id
-                  ? "bg-nav-active text-white shadow-md scale-105"
-                  : "text-nav-foreground hover:text-white"
+                  ? "bg-white/20 text-white shadow-md scale-105 backdrop-blur-sm"
+                  : "text-white/80 hover:bg-white/10 hover:text-white"
               )}
             >
               <div className="flex items-center space-x-3">
@@ -163,8 +163,8 @@ export default function NavigationMenu() {
                   className={cn(
                     "w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold transition-colors flex-shrink-0",
                     activeSection === item.id
-                      ? "bg-white text-nav-active"
-                      : "bg-nav-foreground/20 text-nav-foreground group-hover:bg-white group-hover:text-nav-hover"
+                      ? "bg-white text-primary"
+                      : "bg-white/20 text-white group-hover:bg-white/30"
                   )}
                 >
                   {item.number}
@@ -175,8 +175,8 @@ export default function NavigationMenu() {
           ))}
         </div>
 
-        <div className="mt-6 pt-4 border-t border-nav-foreground/20">
-          <div className="text-nav-foreground/70 text-xs text-center">
+        <div className="mt-6 pt-4 border-t border-white/20">
+          <div className="text-white/60 text-xs text-center">
             <div className="mb-1">Personal Injury</div>
             <div className="font-semibold">Questionnaire</div>
           </div>
