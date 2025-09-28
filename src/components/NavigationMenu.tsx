@@ -89,9 +89,9 @@ export default function NavigationMenu() {
               className="fixed inset-0 bg-black/50 z-40"
               onClick={() => setIsOpen(false)}
             />
-            <div className="fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-white/10 backdrop-blur-2xl shadow-2xl border-l border-white/30 z-50 overflow-y-auto ring-1 ring-white/20">
+            <div className="fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-black/40 backdrop-blur-2xl shadow-2xl border-l border-white/20 z-50 overflow-y-auto ring-1 ring-white/10">
               <div className="p-6 pt-20">
-                <h3 className="text-white font-semibold text-lg mb-6 drop-shadow-sm">
+                <h3 className="text-white font-semibold text-lg mb-6 drop-shadow-lg">
                   Questionnaire Sections
                 </h3>
                 
@@ -141,9 +141,9 @@ export default function NavigationMenu() {
   // Desktop Menu
   return (
     <div className="fixed right-4 top-1/2 transform -translate-y-1/2 z-50 w-48">
-      <nav className="bg-white/10 backdrop-blur-2xl rounded-2xl shadow-2xl border border-white/30 p-3 max-h-[80vh] overflow-y-auto w-full ring-1 ring-white/20">
+      <nav className="bg-black/40 backdrop-blur-2xl rounded-2xl shadow-2xl border border-white/20 p-3 max-h-[80vh] overflow-y-auto w-full ring-1 ring-white/10">
         <div className="space-y-0.5">
-          <h3 className="text-white font-semibold text-xs mb-2 px-1 whitespace-nowrap drop-shadow-sm">
+          <h3 className="text-white font-semibold text-xs mb-2 px-1 whitespace-nowrap drop-shadow-lg">
             Sections
           </h3>
           
