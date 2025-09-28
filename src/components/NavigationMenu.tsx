@@ -140,11 +140,11 @@ export default function NavigationMenu() {
 
   // Desktop Menu
   return (
-    <div className="fixed right-6 top-1/2 transform -translate-y-1/2 z-50 w-64">
-      <nav className="bg-nav/95 backdrop-blur-sm rounded-lg shadow-lg border border-nav/20 p-4 max-h-[80vh] overflow-y-auto w-full">
-        <div className="space-y-1">
-          <h3 className="text-nav-foreground font-semibold text-sm mb-3 px-2 whitespace-nowrap">
-            Questionnaire Sections
+    <div className="fixed right-4 top-1/2 transform -translate-y-1/2 z-50 w-48">
+      <nav className="bg-nav/20 backdrop-blur-md rounded-lg shadow-sm border border-nav/10 p-2 max-h-[80vh] overflow-y-auto w-full">
+        <div className="space-y-0.5">
+          <h3 className="text-nav-foreground/80 font-medium text-xs mb-2 px-1 whitespace-nowrap opacity-70">
+            Sections
           </h3>
           
           {navItems.map((item) => (
