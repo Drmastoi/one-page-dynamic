@@ -76,7 +76,7 @@ export default function NavigationMenu() {
         {/* Mobile Menu Button */}
         <Button
           onClick={() => setIsOpen(!isOpen)}
-          className="fixed top-4 right-4 z-50 w-12 h-12 rounded-full shadow-lg"
+          className="fixed top-4 left-4 z-50 w-12 h-12 rounded-full shadow-lg"
           size="sm"
         >
           {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -89,7 +89,7 @@ export default function NavigationMenu() {
               className="fixed inset-0 bg-black/50 z-40"
               onClick={() => setIsOpen(false)}
             />
-            <div className="fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-black/40 backdrop-blur-2xl shadow-2xl border-l border-white/20 z-50 overflow-y-auto ring-1 ring-white/10">
+            <div className="fixed top-0 left-0 h-full w-80 max-w-[85vw] bg-black/40 backdrop-blur-2xl shadow-2xl border-r border-white/20 z-50 overflow-y-auto ring-1 ring-white/10">
               <div className="p-6 pt-20">
                 <h3 className="text-white font-semibold text-lg mb-6 drop-shadow-lg">
                   Questionnaire Sections
@@ -140,7 +140,7 @@ export default function NavigationMenu() {
 
   // Desktop Menu
   return (
-    <div className="fixed right-4 top-1/2 transform -translate-y-1/2 z-50 w-48">
+    <div className="fixed left-4 top-1/2 transform -translate-y-1/2 z-50 w-48">
       <nav className="bg-black/40 backdrop-blur-2xl rounded-2xl shadow-2xl border border-white/20 p-3 max-h-[80vh] overflow-y-auto w-full ring-1 ring-white/10">
         <div className="space-y-0.5">
           <h3 className="text-white font-semibold text-xs mb-2 px-1 whitespace-nowrap drop-shadow-lg">
