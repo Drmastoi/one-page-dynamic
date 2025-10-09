@@ -72,10 +72,10 @@ export default function NavigationMenu() {
 
   // Horizontal Menu
   return (
-    <div className="w-full bg-black/40 backdrop-blur-2xl shadow-2xl border-b border-white/20 ring-1 ring-white/10">
-      <nav className="container mx-auto px-4 py-4">
-        <div className="flex items-center gap-3 overflow-x-auto scrollbar-hide">
-          <h3 className="text-white font-semibold text-sm mr-4 whitespace-nowrap drop-shadow-lg flex-shrink-0">
+    <div className="sticky top-0 w-full bg-black/40 backdrop-blur-2xl shadow-xl border-b border-white/20 ring-1 ring-white/10 z-50">
+      <nav className="container mx-auto px-2 py-2">
+        <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-hide">
+          <h3 className="text-white font-semibold text-xs mr-2 whitespace-nowrap drop-shadow-lg flex-shrink-0">
             Sections:
           </h3>
           
@@ -84,7 +84,7 @@ export default function NavigationMenu() {
               key={item.id}
               onClick={() => scrollToSection(item.id)}
               className={cn(
-                "flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 whitespace-nowrap flex-shrink-0",
+                "flex items-center gap-1 px-2 py-1 rounded-lg text-xs font-medium transition-all duration-200 whitespace-nowrap flex-shrink-0",
                 activeSection === item.id
                   ? "bg-teal-500 text-white shadow-lg border border-teal-400"
                   : "text-white/85 bg-white/10 hover:bg-white/20 hover:text-white border border-white/20"
@@ -92,7 +92,7 @@ export default function NavigationMenu() {
             >
               <div 
                 className={cn(
-                  "w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold transition-colors flex-shrink-0",
+                  "w-4 h-4 rounded-full flex items-center justify-center text-[10px] font-bold transition-colors flex-shrink-0",
                   activeSection === item.id
                     ? "bg-white text-teal-600"
                     : "bg-white/25 text-white"
@@ -100,7 +100,7 @@ export default function NavigationMenu() {
               >
                 {item.number}
               </div>
-              <span className="text-sm drop-shadow-sm">{item.title}</span>
+              <span className="text-xs drop-shadow-sm">{item.title}</span>
             </button>
           ))}
         </div>
