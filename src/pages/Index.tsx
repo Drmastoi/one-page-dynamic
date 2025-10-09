@@ -8,7 +8,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 relative">
       {/* Background pattern for glass effect visibility */}
-      <div className="absolute inset-0 opacity-30">
+      <div className="absolute inset-0 opacity-30 pointer-events-none">
         <div className="absolute top-20 left-10 w-32 h-32 bg-blue-400 rounded-full blur-xl"></div>
         <div className="absolute top-40 right-20 w-24 h-24 bg-purple-400 rounded-full blur-xl"></div>
         <div className="absolute bottom-40 left-1/4 w-40 h-40 bg-pink-400 rounded-full blur-xl"></div>

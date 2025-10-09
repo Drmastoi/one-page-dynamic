@@ -28,161 +28,33 @@ export default function QuestionnaireForm() {
     setIsSubmitting(true);
 
     try {
-      // Prepare email content
-      const emailContent = `
-Personal Injury Questionnaire Response
+      const response = await fetch(
+        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/send-questionnaire`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ formData }),
+        }
+      );
 
-SECTION 1: PERSONAL INFORMATION
-Full Name: ${formData.fullName}
-Date of Birth: ${formData.dateOfBirth}
-ID Type: ${formData.idType}
-Email: ${formData.email}
-Full Address: ${formData.fullAddress}
-Occupation: ${formData.occupation}
-Work Type: ${formData.workType}
-Living With: ${formData.livingWith}
-Number of Children: ${formData.numberOfChildren}
+      if (!response.ok) {
+        throw new Error('Failed to submit questionnaire');
+      }
 
-SECTION 2: ACCIDENT DETAILS
-Date of Accident: ${formData.accidentDate}
-Accident Time: ${formData.accidentTime}
-Position in Vehicle: ${formData.vehiclePosition}
-Vehicle Type: ${formData.vehicleType}
-Vehicle Location: ${formData.vehicleLocation}
-Vehicle Status: ${formData.vehicleStatus}
-Impact Location: ${formData.impactLocation}
-How Jolted: ${formData.howJolted}
-Wearing Seatbelt: ${formData.wearingSeatbelt}
-Airbags Off: ${formData.airbagsOff}
-Vehicle Damage: ${formData.vehicleDamage}
-Need Help: ${formData.needHelp}
-Other Vehicle Type: ${formData.otherVehicleType}
-
-SECTION 3: NECK PAIN
-Neck Pain: ${formData.neckPain}
-Neck Side: ${formData.neckSide}
-Pain Start: ${formData.neckPainStart}
-Initial Severity: ${formData.neckInitialSeverity}
-Current Severity: ${formData.neckCurrentSeverity}
-Resolved Days: ${formData.neckResolvedDays}
-
-SECTION 4: SHOULDER PAIN
-Shoulder Pain: ${formData.shoulderPain}
-Shoulder Side: ${formData.shoulderSide}
-Pain Start: ${formData.shoulderPainStart}
-Initial Severity: ${formData.shoulderInitialSeverity}
-Current Severity: ${formData.shoulderCurrentSeverity}
-Resolved Days: ${formData.shoulderResolvedDays}
-
-SECTION 5: BACK PAIN
-Back Pain: ${formData.backPain}
-Back Location: ${formData.backLocation}
-Pain Start: ${formData.backPainStart}
-Initial Severity: ${formData.backInitialSeverity}
-Current Severity: ${formData.backCurrentSeverity}
-Resolved Days: ${formData.backResolvedDays}
-
-SECTION 6: HEADACHE
-Headache: ${formData.headache}
-Headache Start: ${formData.headacheStart}
-Initial Severity: ${formData.headacheInitialSeverity}
-Current Severity: ${formData.headacheCurrentSeverity}
-Resolved Days: ${formData.headacheResolvedDays}
-Medical History: ${formData.headacheMedicalHistory}
-
-SECTION 7: TRAVEL ANXIETY
-Travel Anxiety: ${formData.travelAnxiety}
-Back to Driving: ${formData.backToDriving}
-Cautious Driver: ${formData.cautiousDriver}
-Looking Rear Mirror: ${formData.lookingRearMirror}
-Prevented Driving: ${formData.preventedDriving}
-Anxiety Start: ${formData.anxietyStart}
-Initial Severity: ${formData.anxietyInitialSeverity}
-Current Severity: ${formData.anxietyCurrentSeverity}
-Resolved Days: ${formData.anxietyResolvedDays}
-Medical History: ${formData.anxietyMedicalHistory}
-
-SECTION 8: BRUISING/SCARRING
-Bruising: ${formData.bruising}
-Bruising Location: ${formData.bruisingLocation}
-When Noticed: ${formData.bruisingNoticed}
-Initial Severity: ${formData.bruisingInitialSeverity}
-Current Severity: ${formData.bruisingCurrentSeverity}
-Resolved Days: ${formData.bruisingResolvedDays}
-Visible Scar: ${formData.visibleScar}
-
-SECTION 9: OTHER INJURIES
-Other Injury: ${formData.otherInjury}
-Injury Name: ${formData.injuryName}
-Injury Start: ${formData.injuryStart}
-Initial Severity: ${formData.injuryInitialSeverity}
-Current Severity: ${formData.injuryCurrentSeverity}
-Resolved Days: ${formData.injuryResolvedDays}
-
-Additional Injuries:
-More Injury: ${formData.moreInjury}
-More Injury Start: ${formData.moreInjuryStart}
-More Initial Severity: ${formData.moreInjuryInitialSeverity}
-More Current Severity: ${formData.moreInjuryCurrentSeverity}
-More Resolved Days: ${formData.moreInjuryResolvedDays}
-
-Further Injury: ${formData.furtherInjury}
-Further Injury Start: ${formData.furtherInjuryStart}
-Further Initial Severity: ${formData.furtherInjuryInitialSeverity}
-Further Current Severity: ${formData.furtherInjuryCurrentSeverity}
-Further Resolved Days: ${formData.furtherInjuryResolvedDays}
-
-SECTION 10: TREATMENT
-Treatment at Scene: ${formData.treatmentAtScene}
-Treatment Details: ${formData.treatmentDetails}
-Went to A&E: ${formData.wentToAE}
-Hospital Name: ${formData.hospitalName}
-Hospital Treatment: ${formData.hospitalTreatment}
-Went to GP: ${formData.wentToGP}
-GP Days After: ${formData.gpDaysAfter}
-Current Treatment: ${formData.currentTreatment}
-Physiotherapy Sessions: ${formData.physiotherapySessions}
-
-SECTION 11: IMPACT ON LIFE
-Days Off Work: ${formData.daysOffWork}
-Light Duty Days: ${formData.lightDutyDays}
-Work Difficulties: ${formData.workDifficulties}
-Sleep Disturbance: ${formData.sleepDisturbance}
-Sleep Details: ${formData.sleepDisturbanceDetails}
-Domestic Effect: ${formData.domesticEffect}
-Domestic Details: ${formData.domesticEffectDetails}
-Sport/Leisure Effect: ${formData.sportLeisureEffect}
-Sport/Leisure Details: ${formData.sportLeisureEffectDetails}
-Social Life Effect: ${formData.socialLifeEffect}
-Social Life Details: ${formData.socialLifeEffectDetails}
-
-SECTION 12: PREVIOUS HISTORY
-Previous Accident: ${formData.previousAccident}
-Previous Accident Date: ${formData.previousAccidentDate}
-Recovered Completely: ${formData.recoveredCompletely}
-Made Worse: ${formData.madeWorse}
-Previous Conditions: ${formData.previousConditions}
-Anything Else: ${formData.anythingElse}
-Anything Else Details: ${formData.anythingElseDetails}
-
-Submitted on: ${new Date().toLocaleString()}
-      `;
-
-      // Create email body
-      const emailBody = encodeURIComponent(emailContent);
-      const emailSubject = encodeURIComponent('Personal Injury Questionnaire Response');
-      
-      // Open email client
-      window.location.href = `mailto:drawais@gmail.com?subject=${emailSubject}&body=${emailBody}`;
-      
       toast({
-        title: "Form Prepared",
-        description: "Your email client should open with the completed questionnaire. Please send the email to submit your response.",
+        title: "Success!",
+        description: "Your questionnaire has been submitted successfully. You will receive a confirmation email shortly.",
       });
+
+      // Reset form
+      setFormData({});
     } catch (error) {
+      console.error('Submission error:', error);
       toast({
         title: "Error",
-        description: "There was an error preparing your submission. Please try again.",
+        description: "There was an error submitting your questionnaire. Please try again.",
         variant: "destructive",
       });
     } finally {
