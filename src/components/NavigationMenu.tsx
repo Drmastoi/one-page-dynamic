@@ -70,81 +70,13 @@ export default function NavigationMenu() {
     }
   };
 
-  if (isMobile) {
-    return (
-      <>
-        {/* Mobile Menu Button */}
-        <Button
-          onClick={() => setIsOpen(!isOpen)}
-          className="fixed top-4 left-4 z-50 w-12 h-12 rounded-full shadow-lg"
-          size="sm"
-        >
-          {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-        </Button>
-
-        {/* Mobile Menu Overlay */}
-        {isOpen && (
-          <>
-            <div 
-              className="fixed inset-0 bg-black/50 z-40"
-              onClick={() => setIsOpen(false)}
-            />
-            <div className="fixed top-0 left-0 h-full w-80 max-w-[85vw] bg-black/40 backdrop-blur-2xl shadow-2xl border-r border-white/20 z-50 overflow-y-auto ring-1 ring-white/10">
-              <div className="p-6 pt-20">
-                <h3 className="text-white font-semibold text-lg mb-6 drop-shadow-lg">
-                  Questionnaire Sections
-                </h3>
-                
-                <div className="space-y-2">
-                  {navItems.map((item) => (
-                    <button
-                      key={item.id}
-                      onClick={() => scrollToSection(item.id)}
-                      className={cn(
-                        "w-full text-left px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200",
-                        activeSection === item.id
-                          ? "bg-white/25 text-white shadow-lg backdrop-blur-sm border border-white/20"
-                          : "text-white/85 hover:bg-white/15 hover:text-white"
-                      )}
-                    >
-                      <div className="flex items-center space-x-4">
-                        <div 
-                          className={cn(
-                            "w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold transition-colors flex-shrink-0 shadow-lg",
-                            activeSection === item.id
-                              ? "bg-white text-slate-800"
-                              : "bg-white/25 text-white border border-white/20"
-                          )}
-                        >
-                          {item.number}
-                        </div>
-                        <span className="text-sm leading-tight drop-shadow-sm">{item.title}</span>
-                      </div>
-                    </button>
-                  ))}
-                </div>
-
-                <div className="mt-8 pt-6 border-t border-white/25">
-                  <div className="text-white/70 text-sm text-center drop-shadow-sm">
-                    <div className="mb-1">Personal Injury</div>
-                    <div className="font-semibold">Questionnaire</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </>
-        )}
-      </>
-    );
-  }
-
-  // Desktop Menu
+  // Horizontal Menu
   return (
-    <div className="fixed left-4 top-1/2 transform -translate-y-1/2 z-50 w-48">
-      <nav className="bg-black/40 backdrop-blur-2xl rounded-2xl shadow-2xl border border-white/20 p-3 max-h-[80vh] overflow-y-auto w-full ring-1 ring-white/10">
-        <div className="space-y-0.5">
-          <h3 className="text-white font-semibold text-xs mb-2 px-1 whitespace-nowrap drop-shadow-lg">
-            Sections
+    <div className="w-full bg-black/40 backdrop-blur-2xl shadow-2xl border-b border-white/20 ring-1 ring-white/10">
+      <nav className="container mx-auto px-4 py-4">
+        <div className="flex items-center gap-3 overflow-x-auto scrollbar-hide">
+          <h3 className="text-white font-semibold text-sm mr-4 whitespace-nowrap drop-shadow-lg flex-shrink-0">
+            Sections:
           </h3>
           
           {navItems.map((item) => (
@@ -152,34 +84,25 @@ export default function NavigationMenu() {
               key={item.id}
               onClick={() => scrollToSection(item.id)}
               className={cn(
-                "w-full text-left px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 group",
+                "flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 whitespace-nowrap flex-shrink-0",
                 activeSection === item.id
-                  ? "bg-white/25 text-white shadow-lg scale-105 backdrop-blur-sm border border-white/20"
-                  : "text-white/85 hover:bg-white/15 hover:text-white"
+                  ? "bg-teal-500 text-white shadow-lg border border-teal-400"
+                  : "text-white/85 bg-white/10 hover:bg-white/20 hover:text-white border border-white/20"
               )}
             >
-              <div className="flex items-center space-x-3">
-                <div 
-                  className={cn(
-                    "w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold transition-colors flex-shrink-0 shadow-lg",
-                    activeSection === item.id
-                      ? "bg-white text-slate-800"
-                      : "bg-white/25 text-white border border-white/20 group-hover:bg-white/30"
-                  )}
-                >
-                  {item.number}
-                </div>
-                <span className="text-xs leading-tight truncate drop-shadow-sm">{item.title}</span>
+              <div 
+                className={cn(
+                  "w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold transition-colors flex-shrink-0",
+                  activeSection === item.id
+                    ? "bg-white text-teal-600"
+                    : "bg-white/25 text-white"
+                )}
+              >
+                {item.number}
               </div>
+              <span className="text-sm drop-shadow-sm">{item.title}</span>
             </button>
           ))}
-        </div>
-
-        <div className="mt-6 pt-4 border-t border-white/25">
-          <div className="text-white/70 text-xs text-center drop-shadow-sm">
-            <div className="mb-1">Personal Injury</div>
-            <div className="font-semibold">Questionnaire</div>
-          </div>
         </div>
       </nav>
     </div>
