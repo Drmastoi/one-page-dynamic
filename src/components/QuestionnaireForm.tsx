@@ -105,7 +105,7 @@ export default function QuestionnaireForm() {
           </FormField>
 
           <FormField label="Type of ID" field="idType" required>
-            <Select onValueChange={(value) => handleInputChange('idType', value)}>
+            <Select value={formData.idType || ''} onValueChange={(value) => handleInputChange('idType', value)}>
               <SelectTrigger>
                 <SelectValue placeholder="Select ID type" />
               </SelectTrigger>
@@ -147,7 +147,7 @@ export default function QuestionnaireForm() {
             </FormField>
 
             <FormField label="Work Type" field="workType" required>
-              <Select onValueChange={(value) => handleInputChange('workType', value)}>
+              <Select value={formData.workType || ''} onValueChange={(value) => handleInputChange('workType', value)}>
                 <SelectTrigger>
                   <SelectValue placeholder="Select work type" />
                 </SelectTrigger>
@@ -161,7 +161,7 @@ export default function QuestionnaireForm() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <FormField label="Who Lives with You at Home" field="livingWith">
-              <Select onValueChange={(value) => handleInputChange('livingWith', value)}>
+              <Select value={formData.livingWith || ''} onValueChange={(value) => handleInputChange('livingWith', value)}>
                 <SelectTrigger>
                   <SelectValue placeholder="Select living situation" />
                 </SelectTrigger>
@@ -204,7 +204,7 @@ export default function QuestionnaireForm() {
             </FormField>
 
             <FormField label="Accident Time" field="accidentTime" required>
-              <Select onValueChange={(value) => handleInputChange('accidentTime', value)}>
+              <Select value={formData.accidentTime || ''} onValueChange={(value) => handleInputChange('accidentTime', value)}>
                 <SelectTrigger>
                   <SelectValue placeholder="Select time of day" />
                 </SelectTrigger>
@@ -220,7 +220,7 @@ export default function QuestionnaireForm() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <FormField label="Your Position in Vehicle" field="vehiclePosition" required>
-              <Select onValueChange={(value) => handleInputChange('vehiclePosition', value)}>
+              <Select value={formData.vehiclePosition || ''} onValueChange={(value) => handleInputChange('vehiclePosition', value)}>
                 <SelectTrigger>
                   <SelectValue placeholder="Select position" />
                 </SelectTrigger>
@@ -233,7 +233,7 @@ export default function QuestionnaireForm() {
             </FormField>
 
             <FormField label="Your Vehicle Type" field="vehicleType" required>
-              <Select onValueChange={(value) => handleInputChange('vehicleType', value)}>
+              <Select value={formData.vehicleType || ''} onValueChange={(value) => handleInputChange('vehicleType', value)}>
                 <SelectTrigger>
                   <SelectValue placeholder="Select vehicle type" />
                 </SelectTrigger>
@@ -250,7 +250,7 @@ export default function QuestionnaireForm() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <FormField label="Vehicle Location at Time of Accident" field="vehicleLocation" required>
-              <Select onValueChange={(value) => handleInputChange('vehicleLocation', value)}>
+              <Select value={formData.vehicleLocation || ''} onValueChange={(value) => handleInputChange('vehicleLocation', value)}>
                 <SelectTrigger>
                   <SelectValue placeholder="Select location" />
                 </SelectTrigger>
@@ -265,7 +265,7 @@ export default function QuestionnaireForm() {
             </FormField>
 
             <FormField label="Vehicle Status at Time of Accident" field="vehicleStatus" required>
-              <Select onValueChange={(value) => handleInputChange('vehicleStatus', value)}>
+              <Select value={formData.vehicleStatus || ''} onValueChange={(value) => handleInputChange('vehicleStatus', value)}>
                 <SelectTrigger>
                   <SelectValue placeholder="Select status" />
                 </SelectTrigger>
@@ -280,7 +280,7 @@ export default function QuestionnaireForm() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <FormField label="Where was Impact on Your Vehicle" field="impactLocation" required>
-              <Select onValueChange={(value) => handleInputChange('impactLocation', value)}>
+              <Select value={formData.impactLocation || ''} onValueChange={(value) => handleInputChange('impactLocation', value)}>
                 <SelectTrigger>
                   <SelectValue placeholder="Select impact location" />
                 </SelectTrigger>
@@ -294,7 +294,7 @@ export default function QuestionnaireForm() {
             </FormField>
 
             <FormField label="How You Were Jolted" field="howJolted" required>
-              <Select onValueChange={(value) => handleInputChange('howJolted', value)}>
+              <Select value={formData.howJolted || ''} onValueChange={(value) => handleInputChange('howJolted', value)}>
                 <SelectTrigger>
                   <SelectValue placeholder="Select jolt direction" />
                 </SelectTrigger>
@@ -309,7 +309,7 @@ export default function QuestionnaireForm() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <FormField label="Were You Wearing Seatbelt" field="wearingSeatbelt" required>
-              <Select onValueChange={(value) => handleInputChange('wearingSeatbelt', value)}>
+              <Select value={formData.wearingSeatbelt || ''} onValueChange={(value) => handleInputChange('wearingSeatbelt', value)}>
                 <SelectTrigger>
                   <SelectValue placeholder="Select answer" />
                 </SelectTrigger>
@@ -321,7 +321,7 @@ export default function QuestionnaireForm() {
             </FormField>
 
             <FormField label="Did Your Airbags Go Off" field="airbagsOff" required>
-              <Select onValueChange={(value) => handleInputChange('airbagsOff', value)}>
+              <Select value={formData.airbagsOff || ''} onValueChange={(value) => handleInputChange('airbagsOff', value)}>
                 <SelectTrigger>
                   <SelectValue placeholder="Select answer" />
                 </SelectTrigger>
@@ -335,7 +335,7 @@ export default function QuestionnaireForm() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <FormField label="Vehicle Damage Caused" field="vehicleDamage" required>
-              <Select onValueChange={(value) => handleInputChange('vehicleDamage', value)}>
+              <Select value={formData.vehicleDamage || ''} onValueChange={(value) => handleInputChange('vehicleDamage', value)}>
                 <SelectTrigger>
                   <SelectValue placeholder="Select damage level" />
                 </SelectTrigger>
@@ -349,7 +349,7 @@ export default function QuestionnaireForm() {
             </FormField>
 
             <FormField label="Did You Need Help to Get Out of Vehicle" field="needHelp" required>
-              <Select onValueChange={(value) => handleInputChange('needHelp', value)}>
+              <Select value={formData.needHelp || ''} onValueChange={(value) => handleInputChange('needHelp', value)}>
                 <SelectTrigger>
                   <SelectValue placeholder="Select answer" />
                 </SelectTrigger>
@@ -362,7 +362,7 @@ export default function QuestionnaireForm() {
           </div>
 
           <FormField label="Type of Other Vehicle Involved" field="otherVehicleType" required>
-            <Select onValueChange={(value) => handleInputChange('otherVehicleType', value)}>
+            <Select value={formData.otherVehicleType || ''} onValueChange={(value) => handleInputChange('otherVehicleType', value)}>
               <SelectTrigger>
                 <SelectValue placeholder="Select other vehicle type" />
               </SelectTrigger>
@@ -385,7 +385,7 @@ export default function QuestionnaireForm() {
         <h2 className="text-2xl font-semibold mb-6 text-primary">Section 3: Neck Pain Assessment</h2>
         <div className="space-y-4">
           <FormField label="Did you get any neck pain after the accident?" field="neckPain" required>
-            <Select onValueChange={(value) => handleInputChange('neckPain', value)}>
+            <Select value={formData.neckPain || ''} onValueChange={(value) => handleInputChange('neckPain', value)}>
               <SelectTrigger>
                 <SelectValue placeholder="Select answer" />
               </SelectTrigger>
@@ -400,7 +400,7 @@ export default function QuestionnaireForm() {
             <>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <FormField label="Which side of neck?" field="neckSide">
-                  <Select onValueChange={(value) => handleInputChange('neckSide', value)}>
+                  <Select value={formData.neckSide || ''} onValueChange={(value) => handleInputChange('neckSide', value)}>
                     <SelectTrigger>
                       <SelectValue placeholder="Select side" />
                     </SelectTrigger>
@@ -413,7 +413,7 @@ export default function QuestionnaireForm() {
                 </FormField>
 
                 <FormField label="When did this pain start?" field="neckPainStart">
-                  <Select onValueChange={(value) => handleInputChange('neckPainStart', value)}>
+                  <Select value={formData.neckPainStart || ''} onValueChange={(value) => handleInputChange('neckPainStart', value)}>
                     <SelectTrigger>
                       <SelectValue placeholder="Select when" />
                     </SelectTrigger>
@@ -428,7 +428,7 @@ export default function QuestionnaireForm() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <FormField label="Initial severity of pain" field="neckInitialSeverity">
-                  <Select onValueChange={(value) => handleInputChange('neckInitialSeverity', value)}>
+                  <Select value={formData.neckInitialSeverity || ''} onValueChange={(value) => handleInputChange('neckInitialSeverity', value)}>
                     <SelectTrigger>
                       <SelectValue placeholder="Select severity" />
                     </SelectTrigger>
@@ -441,7 +441,7 @@ export default function QuestionnaireForm() {
                 </FormField>
 
                 <FormField label="Current severity of pain" field="neckCurrentSeverity">
-                  <Select onValueChange={(value) => handleInputChange('neckCurrentSeverity', value)}>
+                  <Select value={formData.neckCurrentSeverity || ''} onValueChange={(value) => handleInputChange('neckCurrentSeverity', value)}>
                     <SelectTrigger>
                       <SelectValue placeholder="Select severity" />
                     </SelectTrigger>
@@ -478,7 +478,7 @@ export default function QuestionnaireForm() {
         <h2 className="text-2xl font-semibold mb-6 text-primary">Section 4: Shoulder Pain Assessment</h2>
         <div className="space-y-4">
           <FormField label="Did you get any shoulder pain?" field="shoulderPain" required>
-            <Select onValueChange={(value) => handleInputChange('shoulderPain', value)}>
+            <Select value={formData.shoulderPain || ''} onValueChange={(value) => handleInputChange('shoulderPain', value)}>
               <SelectTrigger>
                 <SelectValue placeholder="Select answer" />
               </SelectTrigger>
@@ -493,7 +493,7 @@ export default function QuestionnaireForm() {
             <>
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 <FormField label="Which side of shoulder?" field="shoulderSide">
-                  <Select onValueChange={(value) => handleInputChange('shoulderSide', value)}>
+                  <Select value={formData.shoulderSide || ''} onValueChange={(value) => handleInputChange('shoulderSide', value)}>
                     <SelectTrigger>
                       <SelectValue placeholder="Select side" />
                     </SelectTrigger>
@@ -506,7 +506,7 @@ export default function QuestionnaireForm() {
                 </FormField>
 
                 <FormField label="When did this pain start?" field="shoulderPainStart">
-                  <Select onValueChange={(value) => handleInputChange('shoulderPainStart', value)}>
+                  <Select value={formData.shoulderPainStart || ''} onValueChange={(value) => handleInputChange('shoulderPainStart', value)}>
                     <SelectTrigger>
                       <SelectValue placeholder="Select when" />
                     </SelectTrigger>
@@ -521,7 +521,7 @@ export default function QuestionnaireForm() {
 
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 <FormField label="Initial severity of pain" field="shoulderInitialSeverity">
-                  <Select onValueChange={(value) => handleInputChange('shoulderInitialSeverity', value)}>
+                  <Select value={formData.shoulderInitialSeverity || ''} onValueChange={(value) => handleInputChange('shoulderInitialSeverity', value)}>
                     <SelectTrigger>
                       <SelectValue placeholder="Select severity" />
                     </SelectTrigger>
@@ -534,7 +534,7 @@ export default function QuestionnaireForm() {
                 </FormField>
 
                 <FormField label="Current severity of pain" field="shoulderCurrentSeverity">
-                  <Select onValueChange={(value) => handleInputChange('shoulderCurrentSeverity', value)}>
+                  <Select value={formData.shoulderCurrentSeverity || ''} onValueChange={(value) => handleInputChange('shoulderCurrentSeverity', value)}>
                     <SelectTrigger>
                       <SelectValue placeholder="Select severity" />
                     </SelectTrigger>
@@ -571,7 +571,7 @@ export default function QuestionnaireForm() {
         <h2 className="text-2xl font-semibold mb-6 text-primary">Section 5: Back Pain Assessment</h2>
         <div className="space-y-4">
           <FormField label="Did you get any back pain?" field="backPain" required>
-            <Select onValueChange={(value) => handleInputChange('backPain', value)}>
+            <Select value={formData.backPain || ''} onValueChange={(value) => handleInputChange('backPain', value)}>
               <SelectTrigger>
                 <SelectValue placeholder="Select answer" />
               </SelectTrigger>
@@ -586,7 +586,7 @@ export default function QuestionnaireForm() {
             <>
               <div className="grid md:grid-cols-2 gap-4">
                 <FormField label="Where in the back?" field="backLocation">
-                  <Select onValueChange={(value) => handleInputChange('backLocation', value)}>
+                  <Select value={formData.backLocation || ''} onValueChange={(value) => handleInputChange('backLocation', value)}>
                     <SelectTrigger>
                       <SelectValue placeholder="Select location" />
                     </SelectTrigger>
@@ -600,7 +600,7 @@ export default function QuestionnaireForm() {
                 </FormField>
 
                 <FormField label="When did this pain start?" field="backPainStart">
-                  <Select onValueChange={(value) => handleInputChange('backPainStart', value)}>
+                  <Select value={formData.backPainStart || ''} onValueChange={(value) => handleInputChange('backPainStart', value)}>
                     <SelectTrigger>
                       <SelectValue placeholder="Select when" />
                     </SelectTrigger>
@@ -615,7 +615,7 @@ export default function QuestionnaireForm() {
 
               <div className="grid md:grid-cols-2 gap-4">
                 <FormField label="Initial severity of pain" field="backInitialSeverity">
-                  <Select onValueChange={(value) => handleInputChange('backInitialSeverity', value)}>
+                  <Select value={formData.backInitialSeverity || ''} onValueChange={(value) => handleInputChange('backInitialSeverity', value)}>
                     <SelectTrigger>
                       <SelectValue placeholder="Select severity" />
                     </SelectTrigger>
@@ -628,7 +628,7 @@ export default function QuestionnaireForm() {
                 </FormField>
 
                 <FormField label="Current severity of pain" field="backCurrentSeverity">
-                  <Select onValueChange={(value) => handleInputChange('backCurrentSeverity', value)}>
+                  <Select value={formData.backCurrentSeverity || ''} onValueChange={(value) => handleInputChange('backCurrentSeverity', value)}>
                     <SelectTrigger>
                       <SelectValue placeholder="Select severity" />
                     </SelectTrigger>
@@ -665,7 +665,7 @@ export default function QuestionnaireForm() {
         <h2 className="text-2xl font-semibold mb-6 text-primary">Section 6: Headache Assessment</h2>
         <div className="space-y-4">
           <FormField label="Did you get any headache?" field="headache" required>
-            <Select onValueChange={(value) => handleInputChange('headache', value)}>
+            <Select value={formData.headache || ''} onValueChange={(value) => handleInputChange('headache', value)}>
               <SelectTrigger>
                 <SelectValue placeholder="Select answer" />
               </SelectTrigger>
@@ -680,7 +680,7 @@ export default function QuestionnaireForm() {
             <>
               <div className="grid md:grid-cols-2 gap-4">
                 <FormField label="When did this pain start?" field="headacheStart">
-                  <Select onValueChange={(value) => handleInputChange('headacheStart', value)}>
+                  <Select value={formData.headacheStart || ''} onValueChange={(value) => handleInputChange('headacheStart', value)}>
                     <SelectTrigger>
                       <SelectValue placeholder="Select when" />
                     </SelectTrigger>
@@ -693,7 +693,7 @@ export default function QuestionnaireForm() {
                 </FormField>
 
                 <FormField label="Initial severity of pain" field="headacheInitialSeverity">
-                  <Select onValueChange={(value) => handleInputChange('headacheInitialSeverity', value)}>
+                  <Select value={formData.headacheInitialSeverity || ''} onValueChange={(value) => handleInputChange('headacheInitialSeverity', value)}>
                     <SelectTrigger>
                       <SelectValue placeholder="Select severity" />
                     </SelectTrigger>
@@ -708,7 +708,7 @@ export default function QuestionnaireForm() {
 
               <div className="grid md:grid-cols-2 gap-4">
                 <FormField label="Current severity of pain" field="headacheCurrentSeverity">
-                  <Select onValueChange={(value) => handleInputChange('headacheCurrentSeverity', value)}>
+                  <Select value={formData.headacheCurrentSeverity || ''} onValueChange={(value) => handleInputChange('headacheCurrentSeverity', value)}>
                     <SelectTrigger>
                       <SelectValue placeholder="Select severity" />
                     </SelectTrigger>
@@ -754,7 +754,7 @@ export default function QuestionnaireForm() {
         <h2 className="text-2xl font-semibold mb-6 text-primary">Section 7: Travel Anxiety Assessment</h2>
         <div className="space-y-4">
           <FormField label="Did you experience travel anxiety, fear of travelling after the accident?" field="travelAnxiety" required>
-            <Select onValueChange={(value) => handleInputChange('travelAnxiety', value)}>
+            <Select value={formData.travelAnxiety || ''} onValueChange={(value) => handleInputChange('travelAnxiety', value)}>
               <SelectTrigger>
                 <SelectValue placeholder="Select answer" />
               </SelectTrigger>
@@ -767,7 +767,7 @@ export default function QuestionnaireForm() {
 
           <div className="grid md:grid-cols-2 gap-4">
             <FormField label="Are you back to driving currently?" field="backToDriving">
-              <Select onValueChange={(value) => handleInputChange('backToDriving', value)}>
+              <Select value={formData.backToDriving || ''} onValueChange={(value) => handleInputChange('backToDriving', value)}>
                 <SelectTrigger>
                   <SelectValue placeholder="Select answer" />
                 </SelectTrigger>
@@ -779,7 +779,7 @@ export default function QuestionnaireForm() {
             </FormField>
 
             <FormField label="Are you more cautious driver after the accident?" field="cautiousDriver">
-              <Select onValueChange={(value) => handleInputChange('cautiousDriver', value)}>
+              <Select value={formData.cautiousDriver || ''} onValueChange={(value) => handleInputChange('cautiousDriver', value)}>
                 <SelectTrigger>
                   <SelectValue placeholder="Select answer" />
                 </SelectTrigger>
@@ -793,7 +793,7 @@ export default function QuestionnaireForm() {
 
           <div className="grid md:grid-cols-2 gap-4">
             <FormField label="Do you keep looking in the rear mirror or over the shoulders and worry of being hit again?" field="lookingRearMirror">
-              <Select onValueChange={(value) => handleInputChange('lookingRearMirror', value)}>
+              <Select value={formData.lookingRearMirror || ''} onValueChange={(value) => handleInputChange('lookingRearMirror', value)}>
                 <SelectTrigger>
                   <SelectValue placeholder="Select answer" />
                 </SelectTrigger>
@@ -805,7 +805,7 @@ export default function QuestionnaireForm() {
             </FormField>
 
             <FormField label="Has it prevented you from driving for leisure and work?" field="preventedDriving">
-              <Select onValueChange={(value) => handleInputChange('preventedDriving', value)}>
+              <Select value={formData.preventedDriving || ''} onValueChange={(value) => handleInputChange('preventedDriving', value)}>
                 <SelectTrigger>
                   <SelectValue placeholder="Select answer" />
                 </SelectTrigger>
@@ -821,7 +821,7 @@ export default function QuestionnaireForm() {
             <>
               <div className="grid md:grid-cols-2 gap-4">
                 <FormField label="When your travel anxiety started" field="anxietyStart">
-                  <Select onValueChange={(value) => handleInputChange('anxietyStart', value)}>
+                  <Select value={formData.anxietyStart || ''} onValueChange={(value) => handleInputChange('anxietyStart', value)}>
                     <SelectTrigger>
                       <SelectValue placeholder="Select when" />
                     </SelectTrigger>
@@ -834,7 +834,7 @@ export default function QuestionnaireForm() {
                 </FormField>
 
                 <FormField label="Initial severity of travel anxiety" field="anxietyInitialSeverity">
-                  <Select onValueChange={(value) => handleInputChange('anxietyInitialSeverity', value)}>
+                  <Select value={formData.anxietyInitialSeverity || ''} onValueChange={(value) => handleInputChange('anxietyInitialSeverity', value)}>
                     <SelectTrigger>
                       <SelectValue placeholder="Select severity" />
                     </SelectTrigger>
@@ -849,7 +849,7 @@ export default function QuestionnaireForm() {
 
               <div className="grid md:grid-cols-2 gap-4">
                 <FormField label="Current severity of travel anxiety" field="anxietyCurrentSeverity">
-                  <Select onValueChange={(value) => handleInputChange('anxietyCurrentSeverity', value)}>
+                  <Select value={formData.anxietyCurrentSeverity || ''} onValueChange={(value) => handleInputChange('anxietyCurrentSeverity', value)}>
                     <SelectTrigger>
                       <SelectValue placeholder="Select severity" />
                     </SelectTrigger>

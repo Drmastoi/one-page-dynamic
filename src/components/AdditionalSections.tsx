@@ -43,7 +43,7 @@ export default function AdditionalSections({ formData, handleInputChange }: Addi
         <h2 className="text-2xl font-semibold mb-6 text-primary">Section 8: Bruising/Scarring Assessment</h2>
         <div className="space-y-4">
           <FormField label="Is there any bruising or scarring on the body due to this accident?" field="bruising" required>
-            <Select onValueChange={(value) => handleInputChange('bruising', value)}>
+            <Select value={formData.bruising || ''} onValueChange={(value) => handleInputChange('bruising', value)}>
               <SelectTrigger>
                 <SelectValue placeholder="Select answer" />
               </SelectTrigger>
@@ -67,7 +67,7 @@ export default function AdditionalSections({ formData, handleInputChange }: Addi
 
               <div className="grid md:grid-cols-2 gap-4">
                 <FormField label="When did you notice it?" field="bruisingNoticed">
-                  <Select onValueChange={(value) => handleInputChange('bruisingNoticed', value)}>
+                  <Select value={formData.bruisingNoticed || ''} onValueChange={(value) => handleInputChange('bruisingNoticed', value)}>
                     <SelectTrigger>
                       <SelectValue placeholder="Select when" />
                     </SelectTrigger>
@@ -80,7 +80,7 @@ export default function AdditionalSections({ formData, handleInputChange }: Addi
                 </FormField>
 
                 <FormField label="Initial severity" field="bruisingInitialSeverity">
-                  <Select onValueChange={(value) => handleInputChange('bruisingInitialSeverity', value)}>
+                  <Select value={formData.bruisingInitialSeverity || ''} onValueChange={(value) => handleInputChange('bruisingInitialSeverity', value)}>
                     <SelectTrigger>
                       <SelectValue placeholder="Select severity" />
                     </SelectTrigger>
@@ -95,7 +95,7 @@ export default function AdditionalSections({ formData, handleInputChange }: Addi
 
               <div className="grid md:grid-cols-2 gap-4">
                 <FormField label="Current severity" field="bruisingCurrentSeverity">
-                  <Select onValueChange={(value) => handleInputChange('bruisingCurrentSeverity', value)}>
+                  <Select value={formData.bruisingCurrentSeverity || ''} onValueChange={(value) => handleInputChange('bruisingCurrentSeverity', value)}>
                     <SelectTrigger>
                       <SelectValue placeholder="Select severity" />
                     </SelectTrigger>
@@ -141,7 +141,7 @@ export default function AdditionalSections({ formData, handleInputChange }: Addi
         <h2 className="text-2xl font-semibold mb-6 text-primary">Section 9: Other Injuries Assessment</h2>
         <div className="space-y-6">
           <FormField label="Any other injury?" field="otherInjury" required>
-            <Select onValueChange={(value) => handleInputChange('otherInjury', value)}>
+            <Select value={formData.otherInjury || ''} onValueChange={(value) => handleInputChange('otherInjury', value)}>
               <SelectTrigger>
                 <SelectValue placeholder="Select answer" />
               </SelectTrigger>
@@ -165,7 +165,7 @@ export default function AdditionalSections({ formData, handleInputChange }: Addi
 
               <div className="grid md:grid-cols-2 gap-4">
                 <FormField label="When this injury started" field="injuryStart">
-                  <Select onValueChange={(value) => handleInputChange('injuryStart', value)}>
+                  <Select value={formData.injuryStart || ''} onValueChange={(value) => handleInputChange('injuryStart', value)}>
                     <SelectTrigger>
                       <SelectValue placeholder="Select when" />
                     </SelectTrigger>
@@ -178,7 +178,7 @@ export default function AdditionalSections({ formData, handleInputChange }: Addi
                 </FormField>
 
                 <FormField label="Initial severity" field="injuryInitialSeverity">
-                  <Select onValueChange={(value) => handleInputChange('injuryInitialSeverity', value)}>
+                  <Select value={formData.injuryInitialSeverity || ''} onValueChange={(value) => handleInputChange('injuryInitialSeverity', value)}>
                     <SelectTrigger>
                       <SelectValue placeholder="Select severity" />
                     </SelectTrigger>
@@ -193,7 +193,7 @@ export default function AdditionalSections({ formData, handleInputChange }: Addi
 
               <div className="grid md:grid-cols-2 gap-4">
                 <FormField label="Current severity" field="injuryCurrentSeverity">
-                  <Select onValueChange={(value) => handleInputChange('injuryCurrentSeverity', value)}>
+                  <Select value={formData.injuryCurrentSeverity || ''} onValueChange={(value) => handleInputChange('injuryCurrentSeverity', value)}>
                     <SelectTrigger>
                       <SelectValue placeholder="Select severity" />
                     </SelectTrigger>
@@ -220,7 +220,7 @@ export default function AdditionalSections({ formData, handleInputChange }: Addi
               </div>
 
               <FormField label="Any more injury?" field="moreInjury">
-                <Select onValueChange={(value) => handleInputChange('moreInjury', value)}>
+                <Select value={formData.moreInjury || ''} onValueChange={(value) => handleInputChange('moreInjury', value)}>
                   <SelectTrigger>
                     <SelectValue placeholder="Select answer" />
                   </SelectTrigger>
@@ -236,7 +236,7 @@ export default function AdditionalSections({ formData, handleInputChange }: Addi
                   <h4 className="text-md font-medium text-primary">Second Additional Injury</h4>
                   <div className="grid md:grid-cols-2 gap-4">
                     <FormField label="When this injury started" field="moreInjuryStart">
-                      <Select onValueChange={(value) => handleInputChange('moreInjuryStart', value)}>
+                      <Select value={formData.moreInjuryStart || ''} onValueChange={(value) => handleInputChange('moreInjuryStart', value)}>
                         <SelectTrigger>
                           <SelectValue placeholder="Select when" />
                         </SelectTrigger>
@@ -249,7 +249,7 @@ export default function AdditionalSections({ formData, handleInputChange }: Addi
                     </FormField>
 
                     <FormField label="Initial severity" field="moreInjuryInitialSeverity">
-                      <Select onValueChange={(value) => handleInputChange('moreInjuryInitialSeverity', value)}>
+                      <Select value={formData.moreInjuryInitialSeverity || ''} onValueChange={(value) => handleInputChange('moreInjuryInitialSeverity', value)}>
                         <SelectTrigger>
                           <SelectValue placeholder="Select severity" />
                         </SelectTrigger>
@@ -264,7 +264,7 @@ export default function AdditionalSections({ formData, handleInputChange }: Addi
 
                   <div className="grid md:grid-cols-2 gap-4">
                     <FormField label="Current severity" field="moreInjuryCurrentSeverity">
-                      <Select onValueChange={(value) => handleInputChange('moreInjuryCurrentSeverity', value)}>
+                      <Select value={formData.moreInjuryCurrentSeverity || ''} onValueChange={(value) => handleInputChange('moreInjuryCurrentSeverity', value)}>
                         <SelectTrigger>
                           <SelectValue placeholder="Select severity" />
                         </SelectTrigger>
@@ -293,7 +293,7 @@ export default function AdditionalSections({ formData, handleInputChange }: Addi
               )}
 
               <FormField label="Any further injury you want to mention?" field="furtherInjury">
-                <Select onValueChange={(value) => handleInputChange('furtherInjury', value)}>
+                <Select value={formData.furtherInjury || ''} onValueChange={(value) => handleInputChange('furtherInjury', value)}>
                   <SelectTrigger>
                     <SelectValue placeholder="Select answer" />
                   </SelectTrigger>
@@ -309,7 +309,7 @@ export default function AdditionalSections({ formData, handleInputChange }: Addi
                   <h4 className="text-md font-medium text-primary">Third Additional Injury</h4>
                   <div className="grid md:grid-cols-2 gap-4">
                     <FormField label="When this injury started" field="furtherInjuryStart">
-                      <Select onValueChange={(value) => handleInputChange('furtherInjuryStart', value)}>
+                      <Select value={formData.furtherInjuryStart || ''} onValueChange={(value) => handleInputChange('furtherInjuryStart', value)}>
                         <SelectTrigger>
                           <SelectValue placeholder="Select when" />
                         </SelectTrigger>
@@ -322,7 +322,7 @@ export default function AdditionalSections({ formData, handleInputChange }: Addi
                     </FormField>
 
                     <FormField label="Initial severity" field="furtherInjuryInitialSeverity">
-                      <Select onValueChange={(value) => handleInputChange('furtherInjuryInitialSeverity', value)}>
+                      <Select value={formData.furtherInjuryInitialSeverity || ''} onValueChange={(value) => handleInputChange('furtherInjuryInitialSeverity', value)}>
                         <SelectTrigger>
                           <SelectValue placeholder="Select severity" />
                         </SelectTrigger>
@@ -337,7 +337,7 @@ export default function AdditionalSections({ formData, handleInputChange }: Addi
 
                   <div className="grid md:grid-cols-2 gap-4">
                     <FormField label="Current severity" field="furtherInjuryCurrentSeverity">
-                      <Select onValueChange={(value) => handleInputChange('furtherInjuryCurrentSeverity', value)}>
+                      <Select value={formData.furtherInjuryCurrentSeverity || ''} onValueChange={(value) => handleInputChange('furtherInjuryCurrentSeverity', value)}>
                         <SelectTrigger>
                           <SelectValue placeholder="Select severity" />
                         </SelectTrigger>
@@ -376,7 +376,7 @@ export default function AdditionalSections({ formData, handleInputChange }: Addi
         <h2 className="text-2xl font-semibold mb-6 text-primary">Section 10: Treatment Details</h2>
         <div className="space-y-4">
           <FormField label="Did you receive any treatment at the scene of accident?" field="treatmentAtScene" required>
-            <Select onValueChange={(value) => handleInputChange('treatmentAtScene', value)}>
+            <Select value={formData.treatmentAtScene || ''} onValueChange={(value) => handleInputChange('treatmentAtScene', value)}>
               <SelectTrigger>
                 <SelectValue placeholder="Select answer" />
               </SelectTrigger>
@@ -400,7 +400,7 @@ export default function AdditionalSections({ formData, handleInputChange }: Addi
 
           <div className="grid md:grid-cols-2 gap-4">
             <FormField label="Did you go to A&E after accident?" field="wentToAE" required>
-              <Select onValueChange={(value) => handleInputChange('wentToAE', value)}>
+              <Select value={formData.wentToAE || ''} onValueChange={(value) => handleInputChange('wentToAE', value)}>
                 <SelectTrigger>
                   <SelectValue placeholder="Select answer" />
                 </SelectTrigger>
@@ -424,7 +424,7 @@ export default function AdditionalSections({ formData, handleInputChange }: Addi
 
           {formData.wentToAE === 'yes' && (
             <FormField label="What treatment did you receive at the hospital?" field="hospitalTreatment">
-              <Select onValueChange={(value) => handleInputChange('hospitalTreatment', value)}>
+              <Select value={formData.hospitalTreatment || ''} onValueChange={(value) => handleInputChange('hospitalTreatment', value)}>
                 <SelectTrigger>
                   <SelectValue placeholder="Select treatment" />
                 </SelectTrigger>
@@ -442,7 +442,7 @@ export default function AdditionalSections({ formData, handleInputChange }: Addi
 
           <div className="grid md:grid-cols-2 gap-4">
             <FormField label="Did you go to Walk-in centre / GP after accident?" field="wentToGP" required>
-              <Select onValueChange={(value) => handleInputChange('wentToGP', value)}>
+              <Select value={formData.wentToGP || ''} onValueChange={(value) => handleInputChange('wentToGP', value)}>
                 <SelectTrigger>
                   <SelectValue placeholder="Select answer" />
                 </SelectTrigger>
@@ -467,7 +467,7 @@ export default function AdditionalSections({ formData, handleInputChange }: Addi
           </div>
 
           <FormField label="What is your current treatment?" field="currentTreatment">
-            <Select onValueChange={(value) => handleInputChange('currentTreatment', value)}>
+            <Select value={formData.currentTreatment || ''} onValueChange={(value) => handleInputChange('currentTreatment', value)}>
               <SelectTrigger>
                 <SelectValue placeholder="Select current treatment" />
               </SelectTrigger>
@@ -532,7 +532,7 @@ export default function AdditionalSections({ formData, handleInputChange }: Addi
 
           <div className="grid md:grid-cols-2 gap-4">
             <FormField label="Do you have sleep disturbance?" field="sleepDisturbance" required>
-              <Select onValueChange={(value) => handleInputChange('sleepDisturbance', value)}>
+              <Select value={formData.sleepDisturbance || ''} onValueChange={(value) => handleInputChange('sleepDisturbance', value)}>
                 <SelectTrigger>
                   <SelectValue placeholder="Select answer" />
                 </SelectTrigger>
@@ -557,7 +557,7 @@ export default function AdditionalSections({ formData, handleInputChange }: Addi
 
           <div className="grid md:grid-cols-2 gap-4">
             <FormField label="Do you have effect on domestic living?" field="domesticEffect" required>
-              <Select onValueChange={(value) => handleInputChange('domesticEffect', value)}>
+              <Select value={formData.domesticEffect || ''} onValueChange={(value) => handleInputChange('domesticEffect', value)}>
                 <SelectTrigger>
                   <SelectValue placeholder="Select answer" />
                 </SelectTrigger>
@@ -582,7 +582,7 @@ export default function AdditionalSections({ formData, handleInputChange }: Addi
 
           <div className="grid md:grid-cols-2 gap-4">
             <FormField label="Do you have effect on sport & leisure activity?" field="sportLeisureEffect" required>
-              <Select onValueChange={(value) => handleInputChange('sportLeisureEffect', value)}>
+              <Select value={formData.sportLeisureEffect || ''} onValueChange={(value) => handleInputChange('sportLeisureEffect', value)}>
                 <SelectTrigger>
                   <SelectValue placeholder="Select answer" />
                 </SelectTrigger>
@@ -607,7 +607,7 @@ export default function AdditionalSections({ formData, handleInputChange }: Addi
 
           <div className="grid md:grid-cols-2 gap-4">
             <FormField label="Do you have effect on social life?" field="socialLifeEffect" required>
-              <Select onValueChange={(value) => handleInputChange('socialLifeEffect', value)}>
+              <Select value={formData.socialLifeEffect || ''} onValueChange={(value) => handleInputChange('socialLifeEffect', value)}>
                 <SelectTrigger>
                   <SelectValue placeholder="Select answer" />
                 </SelectTrigger>
@@ -639,7 +639,7 @@ export default function AdditionalSections({ formData, handleInputChange }: Addi
         <h2 className="text-2xl font-semibold mb-6 text-primary">Section 12: Previous Medical History</h2>
         <div className="space-y-4">
           <FormField label="Did you have previous road traffic accident?" field="previousAccident" required>
-            <Select onValueChange={(value) => handleInputChange('previousAccident', value)}>
+            <Select value={formData.previousAccident || ''} onValueChange={(value) => handleInputChange('previousAccident', value)}>
               <SelectTrigger>
                 <SelectValue placeholder="Select answer" />
               </SelectTrigger>
@@ -661,7 +661,7 @@ export default function AdditionalSections({ formData, handleInputChange }: Addi
               </FormField>
 
               <FormField label="Did you recover completely from previous accident?" field="recoveredCompletely">
-                <Select onValueChange={(value) => handleInputChange('recoveredCompletely', value)}>
+                <Select value={formData.recoveredCompletely || ''} onValueChange={(value) => handleInputChange('recoveredCompletely', value)}>
                   <SelectTrigger>
                     <SelectValue placeholder="Select answer" />
                   </SelectTrigger>
@@ -673,7 +673,7 @@ export default function AdditionalSections({ formData, handleInputChange }: Addi
               </FormField>
 
               <FormField label="Has this accident made previous injuries worse?" field="madeWorse">
-                <Select onValueChange={(value) => handleInputChange('madeWorse', value)}>
+                <Select value={formData.madeWorse || ''} onValueChange={(value) => handleInputChange('madeWorse', value)}>
                   <SelectTrigger>
                     <SelectValue placeholder="Select answer" />
                   </SelectTrigger>
@@ -696,7 +696,7 @@ export default function AdditionalSections({ formData, handleInputChange }: Addi
           </FormField>
 
           <FormField label="Is there anything else you want to add?" field="anythingElse" required>
-            <Select onValueChange={(value) => handleInputChange('anythingElse', value)}>
+            <Select value={formData.anythingElse || ''} onValueChange={(value) => handleInputChange('anythingElse', value)}>
               <SelectTrigger>
                 <SelectValue placeholder="Select answer" />
               </SelectTrigger>
