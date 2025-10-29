@@ -330,17 +330,24 @@ export default function QuestionnaireForm() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <FormField label="Where was Impact on Your Vehicle" field="impactLocation" required>
-              <Select value={formData.impactLocation || ''} onValueChange={(value) => handleInputChange('impactLocation', value)}>
-                <SelectTrigger>
-                  <SelectValue placeholder="Select impact location" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="rear">Rear</SelectItem>
-                  <SelectItem value="front">Front</SelectItem>
-                  <SelectItem value="passenger-side">Passenger Side</SelectItem>
-                  <SelectItem value="driver-side">Driver Side</SelectItem>
-                </SelectContent>
-              </Select>
+              <RadioGroup value={formData.impactLocation || ''} onValueChange={(value) => handleInputChange('impactLocation', value)}>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="rear" id="impact-rear" />
+                  <Label htmlFor="impact-rear" className="font-normal cursor-pointer">Rear</Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="front" id="impact-front" />
+                  <Label htmlFor="impact-front" className="font-normal cursor-pointer">Front</Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="passenger-side" id="impact-passenger" />
+                  <Label htmlFor="impact-passenger" className="font-normal cursor-pointer">Passenger Side</Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="driver-side" id="impact-driver" />
+                  <Label htmlFor="impact-driver" className="font-normal cursor-pointer">Driver Side</Label>
+                </div>
+              </RadioGroup>
             </FormField>
 
             <FormField label="How You Were Jolted" field="howJolted" required>
