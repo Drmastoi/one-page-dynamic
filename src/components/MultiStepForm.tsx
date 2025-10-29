@@ -4,6 +4,7 @@ import { Progress } from '@/components/ui/progress';
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 import { ChevronLeft, ChevronRight, Save } from 'lucide-react';
+import { questionnaireSchema } from '@/lib/validationSchema';
 import PersonalInfoStep from './steps/PersonalInfoStep';
 import AccidentDetailsStep from './steps/AccidentDetailsStep';
 import VehicleInfoStep from './steps/VehicleInfoStep';
@@ -154,15 +155,48 @@ export default function MultiStepForm() {
     setIsSubmitting(true);
 
     try {
+      // Validate all form data before submission
+      const validationResult = questionnaireSchema.safeParse(formData);
+      
+      if (!validationResult.success) {
+        const errors = validationResult.error.errors;
+        const firstError = errors[0];
+        
+        toast({
+          title: "Validation Error",
+          description: `${firstError.path.join('.')}: ${firstError.message}`,
+          variant: "destructive",
+        });
+        
+        // Find which step contains the error and navigate to it
+        const errorField = firstError.path[0] as string;
+        const fieldToStepMap: Record<string, number> = {
+          fullName: 1, email: 1, phone: 1, address: 1, city: 1, state: 1, zipCode: 1, dateOfBirth: 1,
+          accidentDate: 2, accidentLocation: 2, accidentDescription: 2, policeReportFiled: 2, 
+          policeReportNumber: 2, faultParty: 2, weatherConditions: 2, roadConditions: 2, trafficConditions: 2,
+          vehicleLocation: 3, vehicleType: 3, vehicleDamage: 3, impactLocation: 3, otherVehicleType: 3,
+          immediatePain: 4, currentPain: 4, injuryDescription: 4, medicalTreatment: 4, 
+          hospitalName: 4, doctorName: 4, ongoingTreatment: 4,
+          whoLivesWithYou: 5, witnesses: 5, witnessDetails: 5, insuranceCompany: 5, 
+          policyNumber: 5, claimFiled: 5,
+        };
+        
+        const targetStep = fieldToStepMap[errorField] || 1;
+        setCurrentStep(targetStep);
+        setIsSubmitting(false);
+        return;
+      }
+
       // Upload photos if any
       let photoUrls: string[] = [];
       if (formData.photos && formData.photos.length > 0) {
         photoUrls = await uploadPhotos(formData.photos);
       }
 
-      // Prepare submission data
+      // Prepare submission data (exclude photos file objects)
+      const { photos, ...validatedData } = validationResult.data;
       const submissionData = {
-        ...formData,
+        ...validatedData,
         photoUrls,
       };
 
@@ -184,11 +218,14 @@ export default function MultiStepForm() {
       localStorage.removeItem(STORAGE_KEY);
       setFormData({});
       setCurrentStep(1);
-    } catch (error) {
+    } catch (error: any) {
       console.error('Submission error:', error);
+      
+      const errorMessage = error?.message || "There was an error submitting your questionnaire. Please try again.";
+      
       toast({
         title: "Error",
-        description: "There was an error submitting your questionnaire. Please try again.",
+        description: errorMessage,
         variant: "destructive",
       });
     } finally {
