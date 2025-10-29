@@ -2,6 +2,7 @@ import React from 'react';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Card } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
@@ -43,15 +44,16 @@ export default function AdditionalSections({ formData, handleInputChange }: Addi
         <h2 className="text-2xl font-semibold mb-6 text-primary">Section 8: Bruising/Scarring Assessment</h2>
         <div className="space-y-4">
           <FormField label="Is there any bruising or scarring on the body due to this accident?" field="bruising" required>
-            <Select value={formData.bruising || ''} onValueChange={(value) => handleInputChange('bruising', value)}>
-              <SelectTrigger>
-                <SelectValue placeholder="Select answer" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="yes">Yes</SelectItem>
-                <SelectItem value="no">No</SelectItem>
-              </SelectContent>
-            </Select>
+            <RadioGroup value={formData.bruising || ''} onValueChange={(value) => handleInputChange('bruising', value)} className="flex gap-4">
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="yes" id="bruising-yes" />
+                <Label htmlFor="bruising-yes" className="font-normal cursor-pointer">Yes</Label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="no" id="bruising-no" />
+                <Label htmlFor="bruising-no" className="font-normal cursor-pointer">No</Label>
+              </div>
+            </RadioGroup>
           </FormField>
 
           {formData.bruising === 'yes' && (
@@ -141,15 +143,16 @@ export default function AdditionalSections({ formData, handleInputChange }: Addi
         <h2 className="text-2xl font-semibold mb-6 text-primary">Section 9: Other Injuries Assessment</h2>
         <div className="space-y-6">
           <FormField label="Any other injury?" field="otherInjury" required>
-            <Select value={formData.otherInjury || ''} onValueChange={(value) => handleInputChange('otherInjury', value)}>
-              <SelectTrigger>
-                <SelectValue placeholder="Select answer" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="yes">Yes</SelectItem>
-                <SelectItem value="no">No</SelectItem>
-              </SelectContent>
-            </Select>
+            <RadioGroup value={formData.otherInjury || ''} onValueChange={(value) => handleInputChange('otherInjury', value)} className="flex gap-4">
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="yes" id="other-injury-yes" />
+                <Label htmlFor="other-injury-yes" className="font-normal cursor-pointer">Yes</Label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="no" id="other-injury-no" />
+                <Label htmlFor="other-injury-no" className="font-normal cursor-pointer">No</Label>
+              </div>
+            </RadioGroup>
           </FormField>
 
           {formData.otherInjury === 'yes' && (
@@ -220,15 +223,16 @@ export default function AdditionalSections({ formData, handleInputChange }: Addi
               </div>
 
               <FormField label="Any more injury?" field="moreInjury">
-                <Select value={formData.moreInjury || ''} onValueChange={(value) => handleInputChange('moreInjury', value)}>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select answer" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="yes">Yes</SelectItem>
-                    <SelectItem value="no">No</SelectItem>
-                  </SelectContent>
-                </Select>
+                <RadioGroup value={formData.moreInjury || ''} onValueChange={(value) => handleInputChange('moreInjury', value)} className="flex gap-4">
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="yes" id="more-injury-yes" />
+                    <Label htmlFor="more-injury-yes" className="font-normal cursor-pointer">Yes</Label>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="no" id="more-injury-no" />
+                    <Label htmlFor="more-injury-no" className="font-normal cursor-pointer">No</Label>
+                  </div>
+                </RadioGroup>
               </FormField>
 
               {formData.moreInjury === 'yes' && (
@@ -293,15 +297,16 @@ export default function AdditionalSections({ formData, handleInputChange }: Addi
               )}
 
               <FormField label="Any further injury you want to mention?" field="furtherInjury">
-                <Select value={formData.furtherInjury || ''} onValueChange={(value) => handleInputChange('furtherInjury', value)}>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select answer" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="yes">Yes</SelectItem>
-                    <SelectItem value="no">No</SelectItem>
-                  </SelectContent>
-                </Select>
+                <RadioGroup value={formData.furtherInjury || ''} onValueChange={(value) => handleInputChange('furtherInjury', value)} className="flex gap-4">
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="yes" id="further-injury-yes" />
+                    <Label htmlFor="further-injury-yes" className="font-normal cursor-pointer">Yes</Label>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="no" id="further-injury-no" />
+                    <Label htmlFor="further-injury-no" className="font-normal cursor-pointer">No</Label>
+                  </div>
+                </RadioGroup>
               </FormField>
 
               {formData.furtherInjury === 'yes' && (
@@ -376,15 +381,16 @@ export default function AdditionalSections({ formData, handleInputChange }: Addi
         <h2 className="text-2xl font-semibold mb-6 text-primary">Section 10: Treatment Details</h2>
         <div className="space-y-4">
           <FormField label="Did you receive any treatment at the scene of accident?" field="treatmentAtScene" required>
-            <Select value={formData.treatmentAtScene || ''} onValueChange={(value) => handleInputChange('treatmentAtScene', value)}>
-              <SelectTrigger>
-                <SelectValue placeholder="Select answer" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="yes">Yes</SelectItem>
-                <SelectItem value="no">No</SelectItem>
-              </SelectContent>
-            </Select>
+            <RadioGroup value={formData.treatmentAtScene || ''} onValueChange={(value) => handleInputChange('treatmentAtScene', value)} className="flex gap-4">
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="yes" id="treatment-scene-yes" />
+                <Label htmlFor="treatment-scene-yes" className="font-normal cursor-pointer">Yes</Label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="no" id="treatment-scene-no" />
+                <Label htmlFor="treatment-scene-no" className="font-normal cursor-pointer">No</Label>
+              </div>
+            </RadioGroup>
           </FormField>
 
           {formData.treatmentAtScene === 'yes' && (
@@ -400,15 +406,16 @@ export default function AdditionalSections({ formData, handleInputChange }: Addi
 
           <div className="grid md:grid-cols-2 gap-4">
             <FormField label="Did you go to A&E after accident?" field="wentToAE" required>
-              <Select value={formData.wentToAE || ''} onValueChange={(value) => handleInputChange('wentToAE', value)}>
-                <SelectTrigger>
-                  <SelectValue placeholder="Select answer" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="yes">Yes</SelectItem>
-                  <SelectItem value="no">No</SelectItem>
-                </SelectContent>
-              </Select>
+              <RadioGroup value={formData.wentToAE || ''} onValueChange={(value) => handleInputChange('wentToAE', value)} className="flex gap-4">
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="yes" id="went-ae-yes" />
+                  <Label htmlFor="went-ae-yes" className="font-normal cursor-pointer">Yes</Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="no" id="went-ae-no" />
+                  <Label htmlFor="went-ae-no" className="font-normal cursor-pointer">No</Label>
+                </div>
+              </RadioGroup>
             </FormField>
 
             {formData.wentToAE === 'yes' && (
@@ -442,15 +449,16 @@ export default function AdditionalSections({ formData, handleInputChange }: Addi
 
           <div className="grid md:grid-cols-2 gap-4">
             <FormField label="Did you go to Walk-in centre / GP after accident?" field="wentToGP" required>
-              <Select value={formData.wentToGP || ''} onValueChange={(value) => handleInputChange('wentToGP', value)}>
-                <SelectTrigger>
-                  <SelectValue placeholder="Select answer" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="yes">Yes</SelectItem>
-                  <SelectItem value="no">No</SelectItem>
-                </SelectContent>
-              </Select>
+              <RadioGroup value={formData.wentToGP || ''} onValueChange={(value) => handleInputChange('wentToGP', value)} className="flex gap-4">
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="yes" id="went-gp-yes" />
+                  <Label htmlFor="went-gp-yes" className="font-normal cursor-pointer">Yes</Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="no" id="went-gp-no" />
+                  <Label htmlFor="went-gp-no" className="font-normal cursor-pointer">No</Label>
+                </div>
+              </RadioGroup>
             </FormField>
 
             {formData.wentToGP === 'yes' && (
@@ -532,15 +540,16 @@ export default function AdditionalSections({ formData, handleInputChange }: Addi
 
           <div className="grid md:grid-cols-2 gap-4">
             <FormField label="Do you have sleep disturbance?" field="sleepDisturbance" required>
-              <Select value={formData.sleepDisturbance || ''} onValueChange={(value) => handleInputChange('sleepDisturbance', value)}>
-                <SelectTrigger>
-                  <SelectValue placeholder="Select answer" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="yes">Yes</SelectItem>
-                  <SelectItem value="no">No</SelectItem>
-                </SelectContent>
-              </Select>
+              <RadioGroup value={formData.sleepDisturbance || ''} onValueChange={(value) => handleInputChange('sleepDisturbance', value)} className="flex gap-4">
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="yes" id="sleep-yes" />
+                  <Label htmlFor="sleep-yes" className="font-normal cursor-pointer">Yes</Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="no" id="sleep-no" />
+                  <Label htmlFor="sleep-no" className="font-normal cursor-pointer">No</Label>
+                </div>
+              </RadioGroup>
             </FormField>
 
             {formData.sleepDisturbance === 'yes' && (
@@ -557,15 +566,16 @@ export default function AdditionalSections({ formData, handleInputChange }: Addi
 
           <div className="grid md:grid-cols-2 gap-4">
             <FormField label="Do you have effect on domestic living?" field="domesticEffect" required>
-              <Select value={formData.domesticEffect || ''} onValueChange={(value) => handleInputChange('domesticEffect', value)}>
-                <SelectTrigger>
-                  <SelectValue placeholder="Select answer" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="yes">Yes</SelectItem>
-                  <SelectItem value="no">No</SelectItem>
-                </SelectContent>
-              </Select>
+              <RadioGroup value={formData.domesticEffect || ''} onValueChange={(value) => handleInputChange('domesticEffect', value)} className="flex gap-4">
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="yes" id="domestic-yes" />
+                  <Label htmlFor="domestic-yes" className="font-normal cursor-pointer">Yes</Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="no" id="domestic-no" />
+                  <Label htmlFor="domestic-no" className="font-normal cursor-pointer">No</Label>
+                </div>
+              </RadioGroup>
             </FormField>
 
             {formData.domesticEffect === 'yes' && (
@@ -582,15 +592,16 @@ export default function AdditionalSections({ formData, handleInputChange }: Addi
 
           <div className="grid md:grid-cols-2 gap-4">
             <FormField label="Do you have effect on sport & leisure activity?" field="sportLeisureEffect" required>
-              <Select value={formData.sportLeisureEffect || ''} onValueChange={(value) => handleInputChange('sportLeisureEffect', value)}>
-                <SelectTrigger>
-                  <SelectValue placeholder="Select answer" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="yes">Yes</SelectItem>
-                  <SelectItem value="no">No</SelectItem>
-                </SelectContent>
-              </Select>
+              <RadioGroup value={formData.sportLeisureEffect || ''} onValueChange={(value) => handleInputChange('sportLeisureEffect', value)} className="flex gap-4">
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="yes" id="sport-yes" />
+                  <Label htmlFor="sport-yes" className="font-normal cursor-pointer">Yes</Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="no" id="sport-no" />
+                  <Label htmlFor="sport-no" className="font-normal cursor-pointer">No</Label>
+                </div>
+              </RadioGroup>
             </FormField>
 
             {formData.sportLeisureEffect === 'yes' && (
@@ -607,15 +618,16 @@ export default function AdditionalSections({ formData, handleInputChange }: Addi
 
           <div className="grid md:grid-cols-2 gap-4">
             <FormField label="Do you have effect on social life?" field="socialLifeEffect" required>
-              <Select value={formData.socialLifeEffect || ''} onValueChange={(value) => handleInputChange('socialLifeEffect', value)}>
-                <SelectTrigger>
-                  <SelectValue placeholder="Select answer" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="yes">Yes</SelectItem>
-                  <SelectItem value="no">No</SelectItem>
-                </SelectContent>
-              </Select>
+              <RadioGroup value={formData.socialLifeEffect || ''} onValueChange={(value) => handleInputChange('socialLifeEffect', value)} className="flex gap-4">
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="yes" id="social-yes" />
+                  <Label htmlFor="social-yes" className="font-normal cursor-pointer">Yes</Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="no" id="social-no" />
+                  <Label htmlFor="social-no" className="font-normal cursor-pointer">No</Label>
+                </div>
+              </RadioGroup>
             </FormField>
 
             {formData.socialLifeEffect === 'yes' && (
@@ -639,15 +651,16 @@ export default function AdditionalSections({ formData, handleInputChange }: Addi
         <h2 className="text-2xl font-semibold mb-6 text-primary">Section 12: Previous Medical History</h2>
         <div className="space-y-4">
           <FormField label="Did you have previous road traffic accident?" field="previousAccident" required>
-            <Select value={formData.previousAccident || ''} onValueChange={(value) => handleInputChange('previousAccident', value)}>
-              <SelectTrigger>
-                <SelectValue placeholder="Select answer" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="yes">Yes</SelectItem>
-                <SelectItem value="no">No</SelectItem>
-              </SelectContent>
-            </Select>
+            <RadioGroup value={formData.previousAccident || ''} onValueChange={(value) => handleInputChange('previousAccident', value)} className="flex gap-4">
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="yes" id="previous-accident-yes" />
+                <Label htmlFor="previous-accident-yes" className="font-normal cursor-pointer">Yes</Label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="no" id="previous-accident-no" />
+                <Label htmlFor="previous-accident-no" className="font-normal cursor-pointer">No</Label>
+              </div>
+            </RadioGroup>
           </FormField>
 
           {formData.previousAccident === 'yes' && (
@@ -661,27 +674,29 @@ export default function AdditionalSections({ formData, handleInputChange }: Addi
               </FormField>
 
               <FormField label="Did you recover completely from previous accident?" field="recoveredCompletely">
-                <Select value={formData.recoveredCompletely || ''} onValueChange={(value) => handleInputChange('recoveredCompletely', value)}>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select answer" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="yes">Yes</SelectItem>
-                    <SelectItem value="no">No</SelectItem>
-                  </SelectContent>
-                </Select>
+                <RadioGroup value={formData.recoveredCompletely || ''} onValueChange={(value) => handleInputChange('recoveredCompletely', value)} className="flex gap-4">
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="yes" id="recovered-yes" />
+                    <Label htmlFor="recovered-yes" className="font-normal cursor-pointer">Yes</Label>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="no" id="recovered-no" />
+                    <Label htmlFor="recovered-no" className="font-normal cursor-pointer">No</Label>
+                  </div>
+                </RadioGroup>
               </FormField>
 
               <FormField label="Has this accident made previous injuries worse?" field="madeWorse">
-                <Select value={formData.madeWorse || ''} onValueChange={(value) => handleInputChange('madeWorse', value)}>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select answer" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="yes">Yes</SelectItem>
-                    <SelectItem value="no">No</SelectItem>
-                  </SelectContent>
-                </Select>
+                <RadioGroup value={formData.madeWorse || ''} onValueChange={(value) => handleInputChange('madeWorse', value)} className="flex gap-4">
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="yes" id="made-worse-yes" />
+                    <Label htmlFor="made-worse-yes" className="font-normal cursor-pointer">Yes</Label>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="no" id="made-worse-no" />
+                    <Label htmlFor="made-worse-no" className="font-normal cursor-pointer">No</Label>
+                  </div>
+                </RadioGroup>
               </FormField>
             </>
           )}
