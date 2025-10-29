@@ -24,155 +24,179 @@ const handler = async (req: Request): Promise<Response> => {
 
     console.log("Received questionnaire submission");
 
-    // Format the email content
+    // Format the email content as a table
     const emailContent = `
-<h2>Personal Injury Questionnaire Response</h2>
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background-color: #f5f5f5; }
+    .container { max-width: 800px; margin: 0 auto; background-color: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    h1 { color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 10px; }
+    h2 { color: #34495e; margin-top: 30px; margin-bottom: 15px; font-size: 18px; background-color: #ecf0f1; padding: 10px; border-left: 4px solid #3498db; }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+    th, td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+    th { background-color: #3498db; color: white; font-weight: bold; width: 40%; }
+    td { background-color: #f9f9f9; }
+    tr:hover td { background-color: #f0f0f0; }
+    .footer { text-align: center; margin-top: 30px; color: #7f8c8d; font-size: 14px; padding-top: 20px; border-top: 2px solid #ecf0f1; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Personal Injury Questionnaire Response</h1>
+    <p style="color: #7f8c8d; font-size: 14px;"><strong>Submitted:</strong> ${new Date().toLocaleString()}</p>
+    
+    <h2>SECTION 1: PERSONAL INFORMATION</h2>
+    <table>
+      <tr><th>Full Name</th><td>${formData.fullName || 'N/A'}</td></tr>
+      <tr><th>Date of Birth</th><td>${formData.dateOfBirth || 'N/A'}</td></tr>
+      <tr><th>ID Type</th><td>${formData.idType || 'N/A'}</td></tr>
+      <tr><th>Email</th><td>${formData.email || 'N/A'}</td></tr>
+      <tr><th>Full Address</th><td>${formData.fullAddress || 'N/A'}</td></tr>
+      <tr><th>Occupation</th><td>${formData.occupation || 'N/A'}</td></tr>
+      <tr><th>Work Type</th><td>${formData.workType || 'N/A'}</td></tr>
+      <tr><th>Living With</th><td>${formData.livingWith || 'N/A'}</td></tr>
+      <tr><th>Number of Children</th><td>${formData.numberOfChildren || 'N/A'}</td></tr>
+    </table>
 
-<h3>SECTION 1: PERSONAL INFORMATION</h3>
-<ul>
-  <li><strong>Full Name:</strong> ${formData.fullName || 'N/A'}</li>
-  <li><strong>Date of Birth:</strong> ${formData.dateOfBirth || 'N/A'}</li>
-  <li><strong>ID Type:</strong> ${formData.idType || 'N/A'}</li>
-  <li><strong>Email:</strong> ${formData.email || 'N/A'}</li>
-  <li><strong>Full Address:</strong> ${formData.fullAddress || 'N/A'}</li>
-  <li><strong>Occupation:</strong> ${formData.occupation || 'N/A'}</li>
-  <li><strong>Work Type:</strong> ${formData.workType || 'N/A'}</li>
-  <li><strong>Living With:</strong> ${formData.livingWith || 'N/A'}</li>
-  <li><strong>Number of Children:</strong> ${formData.numberOfChildren || 'N/A'}</li>
-</ul>
+    <h2>SECTION 2: ACCIDENT DETAILS</h2>
+    <table>
+      <tr><th>Date of Accident</th><td>${formData.accidentDate || 'N/A'}</td></tr>
+      <tr><th>Accident Time</th><td>${formData.accidentTime || 'N/A'}</td></tr>
+      <tr><th>Position in Vehicle</th><td>${formData.vehiclePosition || 'N/A'}</td></tr>
+      <tr><th>Vehicle Type</th><td>${formData.vehicleType || 'N/A'}</td></tr>
+      <tr><th>Vehicle Location</th><td>${formData.vehicleLocation || 'N/A'}</td></tr>
+      <tr><th>Vehicle Status</th><td>${formData.vehicleStatus || 'N/A'}</td></tr>
+      <tr><th>Impact Location</th><td>${formData.impactLocation || 'N/A'}</td></tr>
+      <tr><th>How Jolted</th><td>${formData.howJolted || 'N/A'}</td></tr>
+      <tr><th>Wearing Seatbelt</th><td>${formData.wearingSeatbelt || 'N/A'}</td></tr>
+      <tr><th>Airbags Off</th><td>${formData.airbagsOff || 'N/A'}</td></tr>
+      <tr><th>Vehicle Damage</th><td>${formData.vehicleDamage || 'N/A'}</td></tr>
+      <tr><th>Need Help</th><td>${formData.needHelp || 'N/A'}</td></tr>
+      <tr><th>Other Vehicle Type</th><td>${formData.otherVehicleType || 'N/A'}</td></tr>
+    </table>
 
-<h3>SECTION 2: ACCIDENT DETAILS</h3>
-<ul>
-  <li><strong>Date of Accident:</strong> ${formData.accidentDate || 'N/A'}</li>
-  <li><strong>Accident Time:</strong> ${formData.accidentTime || 'N/A'}</li>
-  <li><strong>Position in Vehicle:</strong> ${formData.vehiclePosition || 'N/A'}</li>
-  <li><strong>Vehicle Type:</strong> ${formData.vehicleType || 'N/A'}</li>
-  <li><strong>Vehicle Location:</strong> ${formData.vehicleLocation || 'N/A'}</li>
-  <li><strong>Vehicle Status:</strong> ${formData.vehicleStatus || 'N/A'}</li>
-  <li><strong>Impact Location:</strong> ${formData.impactLocation || 'N/A'}</li>
-  <li><strong>How Jolted:</strong> ${formData.howJolted || 'N/A'}</li>
-  <li><strong>Wearing Seatbelt:</strong> ${formData.wearingSeatbelt || 'N/A'}</li>
-  <li><strong>Airbags Off:</strong> ${formData.airbagsOff || 'N/A'}</li>
-  <li><strong>Vehicle Damage:</strong> ${formData.vehicleDamage || 'N/A'}</li>
-  <li><strong>Need Help:</strong> ${formData.needHelp || 'N/A'}</li>
-  <li><strong>Other Vehicle Type:</strong> ${formData.otherVehicleType || 'N/A'}</li>
-</ul>
+    <h2>SECTION 3: NECK PAIN</h2>
+    <table>
+      <tr><th>Neck Pain</th><td>${formData.neckPain || 'N/A'}</td></tr>
+      <tr><th>Neck Side</th><td>${formData.neckSide || 'N/A'}</td></tr>
+      <tr><th>Pain Start</th><td>${formData.neckPainStart || 'N/A'}</td></tr>
+      <tr><th>Initial Severity</th><td>${formData.neckInitialSeverity || 'N/A'}</td></tr>
+      <tr><th>Current Severity</th><td>${formData.neckCurrentSeverity || 'N/A'}</td></tr>
+      <tr><th>Resolved Days</th><td>${formData.neckResolvedDays || 'N/A'}</td></tr>
+    </table>
 
-<h3>SECTION 3: NECK PAIN</h3>
-<ul>
-  <li><strong>Neck Pain:</strong> ${formData.neckPain || 'N/A'}</li>
-  <li><strong>Neck Side:</strong> ${formData.neckSide || 'N/A'}</li>
-  <li><strong>Pain Start:</strong> ${formData.neckPainStart || 'N/A'}</li>
-  <li><strong>Initial Severity:</strong> ${formData.neckInitialSeverity || 'N/A'}</li>
-  <li><strong>Current Severity:</strong> ${formData.neckCurrentSeverity || 'N/A'}</li>
-  <li><strong>Resolved Days:</strong> ${formData.neckResolvedDays || 'N/A'}</li>
-</ul>
+    <h2>SECTION 4: SHOULDER PAIN</h2>
+    <table>
+      <tr><th>Shoulder Pain</th><td>${formData.shoulderPain || 'N/A'}</td></tr>
+      <tr><th>Shoulder Side</th><td>${formData.shoulderSide || 'N/A'}</td></tr>
+      <tr><th>Pain Start</th><td>${formData.shoulderPainStart || 'N/A'}</td></tr>
+      <tr><th>Initial Severity</th><td>${formData.shoulderInitialSeverity || 'N/A'}</td></tr>
+      <tr><th>Current Severity</th><td>${formData.shoulderCurrentSeverity || 'N/A'}</td></tr>
+      <tr><th>Resolved Days</th><td>${formData.shoulderResolvedDays || 'N/A'}</td></tr>
+    </table>
 
-<h3>SECTION 4: SHOULDER PAIN</h3>
-<ul>
-  <li><strong>Shoulder Pain:</strong> ${formData.shoulderPain || 'N/A'}</li>
-  <li><strong>Shoulder Side:</strong> ${formData.shoulderSide || 'N/A'}</li>
-  <li><strong>Pain Start:</strong> ${formData.shoulderPainStart || 'N/A'}</li>
-  <li><strong>Initial Severity:</strong> ${formData.shoulderInitialSeverity || 'N/A'}</li>
-  <li><strong>Current Severity:</strong> ${formData.shoulderCurrentSeverity || 'N/A'}</li>
-  <li><strong>Resolved Days:</strong> ${formData.shoulderResolvedDays || 'N/A'}</li>
-</ul>
+    <h2>SECTION 5: BACK PAIN</h2>
+    <table>
+      <tr><th>Back Pain</th><td>${formData.backPain || 'N/A'}</td></tr>
+      <tr><th>Back Location</th><td>${formData.backLocation || 'N/A'}</td></tr>
+      <tr><th>Pain Start</th><td>${formData.backPainStart || 'N/A'}</td></tr>
+      <tr><th>Initial Severity</th><td>${formData.backInitialSeverity || 'N/A'}</td></tr>
+      <tr><th>Current Severity</th><td>${formData.backCurrentSeverity || 'N/A'}</td></tr>
+      <tr><th>Resolved Days</th><td>${formData.backResolvedDays || 'N/A'}</td></tr>
+    </table>
 
-<h3>SECTION 5: BACK PAIN</h3>
-<ul>
-  <li><strong>Back Pain:</strong> ${formData.backPain || 'N/A'}</li>
-  <li><strong>Back Location:</strong> ${formData.backLocation || 'N/A'}</li>
-  <li><strong>Pain Start:</strong> ${formData.backPainStart || 'N/A'}</li>
-  <li><strong>Initial Severity:</strong> ${formData.backInitialSeverity || 'N/A'}</li>
-  <li><strong>Current Severity:</strong> ${formData.backCurrentSeverity || 'N/A'}</li>
-  <li><strong>Resolved Days:</strong> ${formData.backResolvedDays || 'N/A'}</li>
-</ul>
+    <h2>SECTION 6: HEADACHE</h2>
+    <table>
+      <tr><th>Headache</th><td>${formData.headache || 'N/A'}</td></tr>
+      <tr><th>Headache Start</th><td>${formData.headacheStart || 'N/A'}</td></tr>
+      <tr><th>Initial Severity</th><td>${formData.headacheInitialSeverity || 'N/A'}</td></tr>
+      <tr><th>Current Severity</th><td>${formData.headacheCurrentSeverity || 'N/A'}</td></tr>
+      <tr><th>Resolved Days</th><td>${formData.headacheResolvedDays || 'N/A'}</td></tr>
+      <tr><th>Medical History</th><td>${formData.headacheMedicalHistory || 'N/A'}</td></tr>
+    </table>
 
-<h3>SECTION 6: HEADACHE</h3>
-<ul>
-  <li><strong>Headache:</strong> ${formData.headache || 'N/A'}</li>
-  <li><strong>Headache Start:</strong> ${formData.headacheStart || 'N/A'}</li>
-  <li><strong>Initial Severity:</strong> ${formData.headacheInitialSeverity || 'N/A'}</li>
-  <li><strong>Current Severity:</strong> ${formData.headacheCurrentSeverity || 'N/A'}</li>
-  <li><strong>Resolved Days:</strong> ${formData.headacheResolvedDays || 'N/A'}</li>
-  <li><strong>Medical History:</strong> ${formData.headacheMedicalHistory || 'N/A'}</li>
-</ul>
+    <h2>SECTION 7: TRAVEL ANXIETY</h2>
+    <table>
+      <tr><th>Travel Anxiety</th><td>${formData.travelAnxiety || 'N/A'}</td></tr>
+      <tr><th>Back to Driving</th><td>${formData.backToDriving || 'N/A'}</td></tr>
+      <tr><th>Cautious Driver</th><td>${formData.cautiousDriver || 'N/A'}</td></tr>
+      <tr><th>Looking Rear Mirror</th><td>${formData.lookingRearMirror || 'N/A'}</td></tr>
+      <tr><th>Prevented Driving</th><td>${formData.preventedDriving || 'N/A'}</td></tr>
+      <tr><th>Anxiety Start</th><td>${formData.anxietyStart || 'N/A'}</td></tr>
+      <tr><th>Initial Severity</th><td>${formData.anxietyInitialSeverity || 'N/A'}</td></tr>
+      <tr><th>Current Severity</th><td>${formData.anxietyCurrentSeverity || 'N/A'}</td></tr>
+      <tr><th>Resolved Days</th><td>${formData.anxietyResolvedDays || 'N/A'}</td></tr>
+      <tr><th>Medical History</th><td>${formData.anxietyMedicalHistory || 'N/A'}</td></tr>
+    </table>
 
-<h3>SECTION 7: TRAVEL ANXIETY</h3>
-<ul>
-  <li><strong>Travel Anxiety:</strong> ${formData.travelAnxiety || 'N/A'}</li>
-  <li><strong>Back to Driving:</strong> ${formData.backToDriving || 'N/A'}</li>
-  <li><strong>Cautious Driver:</strong> ${formData.cautiousDriver || 'N/A'}</li>
-  <li><strong>Looking Rear Mirror:</strong> ${formData.lookingRearMirror || 'N/A'}</li>
-  <li><strong>Prevented Driving:</strong> ${formData.preventedDriving || 'N/A'}</li>
-  <li><strong>Anxiety Start:</strong> ${formData.anxietyStart || 'N/A'}</li>
-  <li><strong>Initial Severity:</strong> ${formData.anxietyInitialSeverity || 'N/A'}</li>
-  <li><strong>Current Severity:</strong> ${formData.anxietyCurrentSeverity || 'N/A'}</li>
-  <li><strong>Resolved Days:</strong> ${formData.anxietyResolvedDays || 'N/A'}</li>
-  <li><strong>Medical History:</strong> ${formData.anxietyMedicalHistory || 'N/A'}</li>
-</ul>
+    <h2>SECTION 8: BRUISING/SCARRING</h2>
+    <table>
+      <tr><th>Bruising</th><td>${formData.bruising || 'N/A'}</td></tr>
+      <tr><th>Bruising Location</th><td>${formData.bruisingLocation || 'N/A'}</td></tr>
+      <tr><th>When Noticed</th><td>${formData.bruisingNoticed || 'N/A'}</td></tr>
+      <tr><th>Initial Severity</th><td>${formData.bruisingInitialSeverity || 'N/A'}</td></tr>
+      <tr><th>Current Severity</th><td>${formData.bruisingCurrentSeverity || 'N/A'}</td></tr>
+      <tr><th>Resolved Days</th><td>${formData.bruisingResolvedDays || 'N/A'}</td></tr>
+      <tr><th>Visible Scar</th><td>${formData.visibleScar || 'N/A'}</td></tr>
+    </table>
 
-<h3>SECTION 8: BRUISING/SCARRING</h3>
-<ul>
-  <li><strong>Bruising:</strong> ${formData.bruising || 'N/A'}</li>
-  <li><strong>Bruising Location:</strong> ${formData.bruisingLocation || 'N/A'}</li>
-  <li><strong>When Noticed:</strong> ${formData.bruisingNoticed || 'N/A'}</li>
-  <li><strong>Initial Severity:</strong> ${formData.bruisingInitialSeverity || 'N/A'}</li>
-  <li><strong>Current Severity:</strong> ${formData.bruisingCurrentSeverity || 'N/A'}</li>
-  <li><strong>Resolved Days:</strong> ${formData.bruisingResolvedDays || 'N/A'}</li>
-  <li><strong>Visible Scar:</strong> ${formData.visibleScar || 'N/A'}</li>
-</ul>
+    <h2>SECTION 9: OTHER INJURIES</h2>
+    <table>
+      <tr><th>Other Injury</th><td>${formData.otherInjury || 'N/A'}</td></tr>
+      <tr><th>Injury Name</th><td>${formData.injuryName || 'N/A'}</td></tr>
+      <tr><th>Injury Start</th><td>${formData.injuryStart || 'N/A'}</td></tr>
+      <tr><th>Initial Severity</th><td>${formData.injuryInitialSeverity || 'N/A'}</td></tr>
+      <tr><th>Current Severity</th><td>${formData.injuryCurrentSeverity || 'N/A'}</td></tr>
+      <tr><th>Resolved Days</th><td>${formData.injuryResolvedDays || 'N/A'}</td></tr>
+    </table>
 
-<h3>SECTION 9: OTHER INJURIES</h3>
-<ul>
-  <li><strong>Other Injury:</strong> ${formData.otherInjury || 'N/A'}</li>
-  <li><strong>Injury Name:</strong> ${formData.injuryName || 'N/A'}</li>
-  <li><strong>Injury Start:</strong> ${formData.injuryStart || 'N/A'}</li>
-  <li><strong>Initial Severity:</strong> ${formData.injuryInitialSeverity || 'N/A'}</li>
-  <li><strong>Current Severity:</strong> ${formData.injuryCurrentSeverity || 'N/A'}</li>
-  <li><strong>Resolved Days:</strong> ${formData.injuryResolvedDays || 'N/A'}</li>
-</ul>
+    <h2>SECTION 10: TREATMENT</h2>
+    <table>
+      <tr><th>Treatment at Scene</th><td>${formData.treatmentAtScene || 'N/A'}</td></tr>
+      <tr><th>Treatment Details</th><td>${formData.treatmentDetails || 'N/A'}</td></tr>
+      <tr><th>Went to A&E</th><td>${formData.wentToAE || 'N/A'}</td></tr>
+      <tr><th>Hospital Name</th><td>${formData.hospitalName || 'N/A'}</td></tr>
+      <tr><th>Hospital Treatment</th><td>${formData.hospitalTreatment || 'N/A'}</td></tr>
+      <tr><th>Went to GP</th><td>${formData.wentToGP || 'N/A'}</td></tr>
+      <tr><th>GP Days After</th><td>${formData.gpDaysAfter || 'N/A'}</td></tr>
+      <tr><th>Current Treatment</th><td>${formData.currentTreatment || 'N/A'}</td></tr>
+      <tr><th>Physiotherapy Sessions</th><td>${formData.physiotherapySessions || 'N/A'}</td></tr>
+    </table>
 
-<h3>SECTION 10: TREATMENT</h3>
-<ul>
-  <li><strong>Treatment at Scene:</strong> ${formData.treatmentAtScene || 'N/A'}</li>
-  <li><strong>Treatment Details:</strong> ${formData.treatmentDetails || 'N/A'}</li>
-  <li><strong>Went to A&E:</strong> ${formData.wentToAE || 'N/A'}</li>
-  <li><strong>Hospital Name:</strong> ${formData.hospitalName || 'N/A'}</li>
-  <li><strong>Hospital Treatment:</strong> ${formData.hospitalTreatment || 'N/A'}</li>
-  <li><strong>Went to GP:</strong> ${formData.wentToGP || 'N/A'}</li>
-  <li><strong>GP Days After:</strong> ${formData.gpDaysAfter || 'N/A'}</li>
-  <li><strong>Current Treatment:</strong> ${formData.currentTreatment || 'N/A'}</li>
-  <li><strong>Physiotherapy Sessions:</strong> ${formData.physiotherapySessions || 'N/A'}</li>
-</ul>
+    <h2>SECTION 11: IMPACT ON LIFE</h2>
+    <table>
+      <tr><th>Days Off Work</th><td>${formData.daysOffWork || 'N/A'}</td></tr>
+      <tr><th>Light Duty Days</th><td>${formData.lightDutyDays || 'N/A'}</td></tr>
+      <tr><th>Work Difficulties</th><td>${formData.workDifficulties || 'N/A'}</td></tr>
+      <tr><th>Sleep Disturbance</th><td>${formData.sleepDisturbance || 'N/A'}</td></tr>
+      <tr><th>Sleep Details</th><td>${formData.sleepDisturbanceDetails || 'N/A'}</td></tr>
+      <tr><th>Domestic Effect</th><td>${formData.domesticEffect || 'N/A'}</td></tr>
+      <tr><th>Domestic Details</th><td>${formData.domesticEffectDetails || 'N/A'}</td></tr>
+      <tr><th>Sport/Leisure Effect</th><td>${formData.sportLeisureEffect || 'N/A'}</td></tr>
+      <tr><th>Sport/Leisure Details</th><td>${formData.sportLeisureEffectDetails || 'N/A'}</td></tr>
+      <tr><th>Social Life Effect</th><td>${formData.socialLifeEffect || 'N/A'}</td></tr>
+      <tr><th>Social Life Details</th><td>${formData.socialLifeEffectDetails || 'N/A'}</td></tr>
+    </table>
 
-<h3>SECTION 11: IMPACT ON LIFE</h3>
-<ul>
-  <li><strong>Days Off Work:</strong> ${formData.daysOffWork || 'N/A'}</li>
-  <li><strong>Light Duty Days:</strong> ${formData.lightDutyDays || 'N/A'}</li>
-  <li><strong>Work Difficulties:</strong> ${formData.workDifficulties || 'N/A'}</li>
-  <li><strong>Sleep Disturbance:</strong> ${formData.sleepDisturbance || 'N/A'}</li>
-  <li><strong>Sleep Details:</strong> ${formData.sleepDisturbanceDetails || 'N/A'}</li>
-  <li><strong>Domestic Effect:</strong> ${formData.domesticEffect || 'N/A'}</li>
-  <li><strong>Domestic Details:</strong> ${formData.domesticEffectDetails || 'N/A'}</li>
-  <li><strong>Sport/Leisure Effect:</strong> ${formData.sportLeisureEffect || 'N/A'}</li>
-  <li><strong>Sport/Leisure Details:</strong> ${formData.sportLeisureEffectDetails || 'N/A'}</li>
-  <li><strong>Social Life Effect:</strong> ${formData.socialLifeEffect || 'N/A'}</li>
-  <li><strong>Social Life Details:</strong> ${formData.socialLifeEffectDetails || 'N/A'}</li>
-</ul>
+    <h2>SECTION 12: PREVIOUS HISTORY</h2>
+    <table>
+      <tr><th>Previous Accident</th><td>${formData.previousAccident || 'N/A'}</td></tr>
+      <tr><th>Previous Accident Date</th><td>${formData.previousAccidentDate || 'N/A'}</td></tr>
+      <tr><th>Recovered Completely</th><td>${formData.recoveredCompletely || 'N/A'}</td></tr>
+      <tr><th>Made Worse</th><td>${formData.madeWorse || 'N/A'}</td></tr>
+      <tr><th>Previous Conditions</th><td>${formData.previousConditions || 'N/A'}</td></tr>
+      <tr><th>Anything Else</th><td>${formData.anythingElse || 'N/A'}</td></tr>
+      <tr><th>Anything Else Details</th><td>${formData.anythingElseDetails || 'N/A'}</td></tr>
+    </table>
 
-<h3>SECTION 12: PREVIOUS HISTORY</h3>
-<ul>
-  <li><strong>Previous Accident:</strong> ${formData.previousAccident || 'N/A'}</li>
-  <li><strong>Previous Accident Date:</strong> ${formData.previousAccidentDate || 'N/A'}</li>
-  <li><strong>Recovered Completely:</strong> ${formData.recoveredCompletely || 'N/A'}</li>
-  <li><strong>Made Worse:</strong> ${formData.madeWorse || 'N/A'}</li>
-  <li><strong>Previous Conditions:</strong> ${formData.previousConditions || 'N/A'}</li>
-  <li><strong>Anything Else:</strong> ${formData.anythingElse || 'N/A'}</li>
-  <li><strong>Anything Else Details:</strong> ${formData.anythingElseDetails || 'N/A'}</li>
-</ul>
-
-<p><em>Submitted on: ${new Date().toLocaleString()}</em></p>
+    <div class="footer">
+      <p>This questionnaire was submitted via the Personal Injury Assessment Form</p>
+    </div>
+  </div>
+</body>
+</html>
     `;
 
     const emailResponse = await resend.emails.send({
