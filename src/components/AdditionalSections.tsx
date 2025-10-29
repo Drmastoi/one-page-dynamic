@@ -14,7 +14,6 @@ interface QuestionnaireFormData {
 interface AdditionalSectionsProps {
   formData: QuestionnaireFormData;
   handleInputChange: (field: string, value: string) => void;
-  sectionFilter?: string;
 }
 
 const FormField = ({ 
@@ -37,18 +36,13 @@ const FormField = ({
   </div>
 );
 
-export default function AdditionalSections({ formData, handleInputChange, sectionFilter }: AdditionalSectionsProps) {
-  const shouldRenderSection = (sectionId: string) => {
-    return !sectionFilter || sectionFilter === sectionId;
-  };
-
+export default function AdditionalSections({ formData, handleInputChange }: AdditionalSectionsProps) {
   return (
     <>
       {/* Section 8: Bruising/Scarring */}
-      {shouldRenderSection('section-8') && (
-        <Card id="section-8" className="p-6 bg-form-section border-form-section-border">
-          <h2 className="text-2xl font-semibold mb-6 text-primary">Section 8: Bruising/Scarring Assessment</h2>
-          <div className="space-y-4">
+      <Card id="section-8" className="p-6 bg-form-section border-form-section-border">
+        <h2 className="text-2xl font-semibold mb-6 text-primary">Section 8: Bruising/Scarring Assessment</h2>
+        <div className="space-y-4">
           <FormField label="Is there any bruising or scarring on the body due to this accident?" field="bruising" required>
             <RadioGroup value={formData.bruising || ''} onValueChange={(value) => handleInputChange('bruising', value)} className="flex gap-4">
               <div className="flex items-center space-x-2">
@@ -139,17 +133,15 @@ export default function AdditionalSections({ formData, handleInputChange, sectio
               </FormField>
             </>
           )}
-          </div>
-        </Card>
-      )}
+        </div>
+      </Card>
 
-      {!sectionFilter && <Separator />}
+      <Separator />
 
       {/* Section 9: Other Injuries */}
-      {shouldRenderSection('section-9') && (
-        <Card id="section-9" className="p-6 bg-form-section border-form-section-border">
-          <h2 className="text-2xl font-semibold mb-6 text-primary">Section 9: Other Injuries Assessment</h2>
-          <div className="space-y-6">
+      <Card id="section-9" className="p-6 bg-form-section border-form-section-border">
+        <h2 className="text-2xl font-semibold mb-6 text-primary">Section 9: Other Injuries Assessment</h2>
+        <div className="space-y-6">
           <FormField label="Any other injury?" field="otherInjury" required>
             <RadioGroup value={formData.otherInjury || ''} onValueChange={(value) => handleInputChange('otherInjury', value)} className="flex gap-4">
               <div className="flex items-center space-x-2">
@@ -740,9 +732,8 @@ export default function AdditionalSections({ formData, handleInputChange, sectio
               />
             </FormField>
           )}
-          </div>
-        </Card>
-      )}
+        </div>
+      </Card>
     </>
   );
 }
