@@ -1,4 +1,4 @@
-import MultiStepForm from '@/components/MultiStepForm';
+import QuestionnaireForm from '@/components/QuestionnaireForm';
 import NavigationMenu from '@/components/NavigationMenu';
 import { useIsMobile } from '@/hooks/use-mobile';
 
@@ -32,7 +32,7 @@ const Index = () => {
           </div>
         </header>
 
-        <MultiStepForm />
+        <QuestionnaireForm />
 
         <footer className="text-center mt-12 sm:mt-16 py-6 sm:py-8 border-t border-border">
           <p className="text-sm text-muted-foreground">
