@@ -166,18 +166,28 @@ export default function QuestionnaireForm() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <FormField label="Who Lives with You at Home" field="livingWith">
-              <Select value={formData.livingWith || ''} onValueChange={(value) => handleInputChange('livingWith', value)}>
-                <SelectTrigger>
-                  <SelectValue placeholder="Select living situation" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="wife">Wife</SelectItem>
-                  <SelectItem value="husband">Husband</SelectItem>
-                  <SelectItem value="partner">Partner</SelectItem>
-                  <SelectItem value="parents">Parents</SelectItem>
-                  <SelectItem value="alone">Alone</SelectItem>
-                </SelectContent>
-              </Select>
+              <RadioGroup value={formData.livingWith || ''} onValueChange={(value) => handleInputChange('livingWith', value)}>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="wife" id="living-wife" />
+                  <Label htmlFor="living-wife" className="font-normal cursor-pointer">Wife</Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="husband" id="living-husband" />
+                  <Label htmlFor="living-husband" className="font-normal cursor-pointer">Husband</Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="partner" id="living-partner" />
+                  <Label htmlFor="living-partner" className="font-normal cursor-pointer">Partner</Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="parents" id="living-parents" />
+                  <Label htmlFor="living-parents" className="font-normal cursor-pointer">Parents</Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="alone" id="living-alone" />
+                  <Label htmlFor="living-alone" className="font-normal cursor-pointer">Alone</Label>
+                </div>
+              </RadioGroup>
             </FormField>
 
             <FormField label="Number of Children at Home" field="numberOfChildren">
@@ -249,35 +259,55 @@ export default function QuestionnaireForm() {
             </FormField>
 
             <FormField label="Your Vehicle Type" field="vehicleType" required>
-              <Select value={formData.vehicleType || ''} onValueChange={(value) => handleInputChange('vehicleType', value)}>
-                <SelectTrigger>
-                  <SelectValue placeholder="Select vehicle type" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="car">Car</SelectItem>
-                  <SelectItem value="van">Van</SelectItem>
-                  <SelectItem value="lorry">Lorry</SelectItem>
-                  <SelectItem value="truck">Truck</SelectItem>
-                  <SelectItem value="bus">Bus</SelectItem>
-                </SelectContent>
-              </Select>
+              <RadioGroup value={formData.vehicleType || ''} onValueChange={(value) => handleInputChange('vehicleType', value)}>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="car" id="vehicle-car" />
+                  <Label htmlFor="vehicle-car" className="font-normal cursor-pointer">Car</Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="van" id="vehicle-van" />
+                  <Label htmlFor="vehicle-van" className="font-normal cursor-pointer">Van</Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="lorry" id="vehicle-lorry" />
+                  <Label htmlFor="vehicle-lorry" className="font-normal cursor-pointer">Lorry</Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="truck" id="vehicle-truck" />
+                  <Label htmlFor="vehicle-truck" className="font-normal cursor-pointer">Truck</Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="bus" id="vehicle-bus" />
+                  <Label htmlFor="vehicle-bus" className="font-normal cursor-pointer">Bus</Label>
+                </div>
+              </RadioGroup>
             </FormField>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <FormField label="Vehicle Location at Time of Accident" field="vehicleLocation" required>
-              <Select value={formData.vehicleLocation || ''} onValueChange={(value) => handleInputChange('vehicleLocation', value)}>
-                <SelectTrigger>
-                  <SelectValue placeholder="Select location" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="main-road">Main Road</SelectItem>
-                  <SelectItem value="minor-road">Minor Road</SelectItem>
-                  <SelectItem value="motorway">Motorway</SelectItem>
-                  <SelectItem value="roundabout">Roundabout</SelectItem>
-                  <SelectItem value="parking">Parking</SelectItem>
-                </SelectContent>
-              </Select>
+              <RadioGroup value={formData.vehicleLocation || ''} onValueChange={(value) => handleInputChange('vehicleLocation', value)}>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="main-road" id="location-main" />
+                  <Label htmlFor="location-main" className="font-normal cursor-pointer">Main Road</Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="minor-road" id="location-minor" />
+                  <Label htmlFor="location-minor" className="font-normal cursor-pointer">Minor Road</Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="motorway" id="location-motorway" />
+                  <Label htmlFor="location-motorway" className="font-normal cursor-pointer">Motorway</Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="roundabout" id="location-roundabout" />
+                  <Label htmlFor="location-roundabout" className="font-normal cursor-pointer">Roundabout</Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="parking" id="location-parking" />
+                  <Label htmlFor="location-parking" className="font-normal cursor-pointer">Parking</Label>
+                </div>
+              </RadioGroup>
             </FormField>
 
             <FormField label="Vehicle Status at Time of Accident" field="vehicleStatus" required>
@@ -361,17 +391,24 @@ export default function QuestionnaireForm() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <FormField label="Vehicle Damage Caused" field="vehicleDamage" required>
-              <Select value={formData.vehicleDamage || ''} onValueChange={(value) => handleInputChange('vehicleDamage', value)}>
-                <SelectTrigger>
-                  <SelectValue placeholder="Select damage level" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="written-off">Written Off</SelectItem>
-                  <SelectItem value="moderate-damage">Moderate Damage</SelectItem>
-                  <SelectItem value="slight-damage">Slight Damage</SelectItem>
-                  <SelectItem value="unknown">Unknown</SelectItem>
-                </SelectContent>
-              </Select>
+              <RadioGroup value={formData.vehicleDamage || ''} onValueChange={(value) => handleInputChange('vehicleDamage', value)}>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="written-off" id="damage-written" />
+                  <Label htmlFor="damage-written" className="font-normal cursor-pointer">Written Off</Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="moderate-damage" id="damage-moderate" />
+                  <Label htmlFor="damage-moderate" className="font-normal cursor-pointer">Moderate Damage</Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="slight-damage" id="damage-slight" />
+                  <Label htmlFor="damage-slight" className="font-normal cursor-pointer">Slight Damage</Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="unknown" id="damage-unknown" />
+                  <Label htmlFor="damage-unknown" className="font-normal cursor-pointer">Unknown</Label>
+                </div>
+              </RadioGroup>
             </FormField>
 
             <FormField label="Did You Need Help to Get Out of Vehicle" field="needHelp" required>
@@ -389,18 +426,28 @@ export default function QuestionnaireForm() {
           </div>
 
           <FormField label="Type of Other Vehicle Involved" field="otherVehicleType" required>
-            <Select value={formData.otherVehicleType || ''} onValueChange={(value) => handleInputChange('otherVehicleType', value)}>
-              <SelectTrigger>
-                <SelectValue placeholder="Select other vehicle type" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="car">Car</SelectItem>
-                <SelectItem value="van">Van</SelectItem>
-                <SelectItem value="lorry">Lorry</SelectItem>
-                <SelectItem value="truck">Truck</SelectItem>
-                <SelectItem value="bus">Bus</SelectItem>
-              </SelectContent>
-            </Select>
+            <RadioGroup value={formData.otherVehicleType || ''} onValueChange={(value) => handleInputChange('otherVehicleType', value)}>
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="car" id="other-car" />
+                <Label htmlFor="other-car" className="font-normal cursor-pointer">Car</Label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="van" id="other-van" />
+                <Label htmlFor="other-van" className="font-normal cursor-pointer">Van</Label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="lorry" id="other-lorry" />
+                <Label htmlFor="other-lorry" className="font-normal cursor-pointer">Lorry</Label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="truck" id="other-truck" />
+                <Label htmlFor="other-truck" className="font-normal cursor-pointer">Truck</Label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="bus" id="other-bus" />
+                <Label htmlFor="other-bus" className="font-normal cursor-pointer">Bus</Label>
+              </div>
+            </RadioGroup>
           </FormField>
         </div>
       </Card>
