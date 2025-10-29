@@ -14,14 +14,21 @@ interface QuestionnaireFormData {
   [key: string]: string;
 }
 
-export default function QuestionnaireForm() {
-  const [formData, setFormData] = useState<QuestionnaireFormData>({} as QuestionnaireFormData);
+interface QuestionnaireFormProps {
+  formData?: QuestionnaireFormData;
+  handleInputChange?: (field: string, value: string) => void;
+  sectionFilter?: string;
+}
+
+export default function QuestionnaireForm({ formData: externalFormData, handleInputChange: externalHandleInputChange, sectionFilter }: QuestionnaireFormProps = {}) {
+  const [internalFormData, setInternalFormData] = useState<QuestionnaireFormData>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
-  const handleInputChange = (field: string, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
-  };
+  const formData = externalFormData || internalFormData;
+  const handleInputChange = externalHandleInputChange || ((field: string, value: string) => {
+    setInternalFormData(prev => ({ ...prev, [field]: value }));
+  });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -82,9 +89,15 @@ export default function QuestionnaireForm() {
     </div>
   );
 
+  // If sectionFilter is provided, only render that section
+  const shouldRenderSection = (sectionId: string) => {
+    return !sectionFilter || sectionFilter === sectionId;
+  };
+
   return (
     <form onSubmit={handleSubmit} className="space-y-8">
       {/* Section 1: Personal Information */}
+      {shouldRenderSection('section-1') && (
       <Card id="section-1" className="p-6 bg-form-section border-form-section-border">
         <h2 className="text-2xl font-semibold mb-6 text-primary">Section 1: Personal Information</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 space-y-0">
@@ -202,10 +215,12 @@ export default function QuestionnaireForm() {
           </div>
         </div>
       </Card>
+      )}
 
-      <Separator />
+      {!sectionFilter && <Separator />}
 
       {/* Section 2: Accident Details */}
+      {shouldRenderSection('section-2') && (
       <Card id="section-2" className="p-6 bg-form-section border-form-section-border">
         <h2 className="text-2xl font-semibold mb-6 text-primary">Section 2: Accident Details</h2>
         <div className="space-y-4">
@@ -458,10 +473,12 @@ export default function QuestionnaireForm() {
           </FormField>
         </div>
       </Card>
+      )}
 
-      <Separator />
+      {!sectionFilter && <Separator />}
 
       {/* Section 3: Neck Pain */}
+      {shouldRenderSection('section-3') && (
       <Card id="section-3" className="p-6 bg-form-section border-form-section-border">
         <h2 className="text-2xl font-semibold mb-6 text-primary">Section 3: Neck Pain Assessment</h2>
         <div className="space-y-4">
@@ -552,10 +569,12 @@ export default function QuestionnaireForm() {
           )}
         </div>
       </Card>
+      )}
 
-      <Separator />
+      {!sectionFilter && <Separator />}
 
       {/* Section 4: Shoulder Pain */}
+      {shouldRenderSection('section-4') && (
       <Card id="section-4" className="p-6 bg-form-section border-form-section-border">
         <h2 className="text-2xl font-semibold mb-6 text-primary">Section 4: Shoulder Pain Assessment</h2>
         <div className="space-y-4">
@@ -646,10 +665,12 @@ export default function QuestionnaireForm() {
           )}
         </div>
       </Card>
+      )}
 
-      <Separator />
+      {!sectionFilter && <Separator />}
 
       {/* Section 5: Back Pain */}
+      {shouldRenderSection('section-5') && (
       <Card id="section-5" className="p-6 bg-form-section border-form-section-border">
         <h2 className="text-2xl font-semibold mb-6 text-primary">Section 5: Back Pain Assessment</h2>
         <div className="space-y-4">
@@ -741,10 +762,12 @@ export default function QuestionnaireForm() {
           )}
         </div>
       </Card>
+      )}
 
-      <Separator />
+      {!sectionFilter && <Separator />}
 
       {/* Section 6: Headache */}
+      {shouldRenderSection('section-6') && (
       <Card id="section-6" className="p-6 bg-form-section border-form-section-border">
         <h2 className="text-2xl font-semibold mb-6 text-primary">Section 6: Headache Assessment</h2>
         <div className="space-y-4">
@@ -831,10 +854,12 @@ export default function QuestionnaireForm() {
           )}
         </div>
       </Card>
+      )}
 
-      <Separator />
+      {!sectionFilter && <Separator />}
 
       {/* Section 7: Travel Anxiety */}
+      {shouldRenderSection('section-7') && (
       <Card id="section-7" className="p-6 bg-form-section border-form-section-border">
         <h2 className="text-2xl font-semibold mb-6 text-primary">Section 7: Travel Anxiety Assessment</h2>
         <div className="space-y-4">
@@ -977,25 +1002,33 @@ export default function QuestionnaireForm() {
           )}
         </div>
       </Card>
+      )}
 
-      <Separator />
+      {!sectionFilter && <Separator />}
 
-      {/* Additional Sections 8-12 */}
-      <AdditionalSections formData={formData} handleInputChange={handleInputChange} />
+      {/* Additional Sections 8-9 */}
+      {!sectionFilter && <AdditionalSections formData={formData} handleInputChange={handleInputChange} />}
+      {sectionFilter && (sectionFilter === 'section-8' || sectionFilter === 'section-9') && (
+        <AdditionalSections formData={formData} handleInputChange={handleInputChange} sectionFilter={sectionFilter} />
+      )}
 
-      <Separator />
+      {!sectionFilter && (
+        <>
+          <Separator />
 
-      {/* Submit Button */}
-      <div className="flex justify-center pt-8">
+          {/* Submit Button */}
+          <div className="flex justify-center pt-8">
         <Button 
           type="submit" 
           size="lg" 
           disabled={isSubmitting}
           className="px-8 py-3 text-lg font-semibold"
         >
-          {isSubmitting ? 'Preparing Submission...' : 'Submit Questionnaire'}
-        </Button>
-      </div>
+            {isSubmitting ? 'Preparing Submission...' : 'Submit Questionnaire'}
+          </Button>
+        </div>
+        </>
+      )}
     </form>
   );
 }
