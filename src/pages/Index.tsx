@@ -1,9 +1,11 @@
+import { useState } from 'react';
 import MultiStepQuestionnaireForm from '@/components/MultiStepQuestionnaireForm';
 import NavigationMenu from '@/components/NavigationMenu';
 import { useIsMobile } from '@/hooks/use-mobile';
 
 const Index = () => {
   const isMobile = useIsMobile();
+  const [currentStep, setCurrentStep] = useState(1);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 relative">
@@ -14,7 +16,7 @@ const Index = () => {
         <div className="absolute bottom-40 left-1/4 w-40 h-40 bg-pink-400 rounded-full blur-xl"></div>
         <div className="absolute bottom-20 right-1/3 w-28 h-28 bg-green-400 rounded-full blur-xl"></div>
       </div>
-      <NavigationMenu />
+      <NavigationMenu currentStep={currentStep} onStepChange={setCurrentStep} />
       
       <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
         <header className="text-center mb-8 sm:mb-12">
@@ -32,7 +34,7 @@ const Index = () => {
           </div>
         </header>
 
-        <MultiStepQuestionnaireForm />
+        <MultiStepQuestionnaireForm currentStep={currentStep} setCurrentStep={setCurrentStep} />
 
         <footer className="text-center mt-12 sm:mt-16 py-6 sm:py-8 border-t border-border">
           <p className="text-sm text-muted-foreground">

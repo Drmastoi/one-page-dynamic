@@ -31,8 +31,15 @@ const STEP_TITLES = [
   'Review & Submit'
 ];
 
-export default function MultiStepQuestionnaireForm() {
-  const [currentStep, setCurrentStep] = useState(1);
+interface MultiStepQuestionnaireFormProps {
+  currentStep: number;
+  setCurrentStep: (step: number) => void;
+}
+
+export default function MultiStepQuestionnaireForm({ 
+  currentStep, 
+  setCurrentStep 
+}: MultiStepQuestionnaireFormProps) {
   const [formData, setFormData] = useState<QuestionnaireFormData>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
