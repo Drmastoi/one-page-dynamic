@@ -15,7 +15,8 @@ const navItems: NavItem[] = [
   { title: 'Headache & Anxiety', number: 6 },
   { title: 'Bruising/Scarring', number: 7 },
   { title: 'Other Injuries', number: 8 },
-  { title: 'Review & Submit', number: 9 },
+  { title: 'Additional Details', number: 9 },
+  { title: 'Preview & Submit', number: 10 },
 ];
 
 interface NavigationMenuProps {

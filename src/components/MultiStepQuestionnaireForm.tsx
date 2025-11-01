@@ -13,13 +13,14 @@ import { StepHeadache } from './questionnaire/StepHeadache';
 import { StepBruising } from './questionnaire/StepBruising';
 import { StepOtherInjuries } from './questionnaire/StepOtherInjuries';
 import { StepReview } from './questionnaire/StepReview';
+import { StepPreviewSubmit } from './questionnaire/StepPreviewSubmit';
 import jsPDF from 'jspdf';
 
 interface QuestionnaireFormData {
   [key: string]: string;
 }
 
-const TOTAL_STEPS = 9;
+const TOTAL_STEPS = 10;
 
 const STEP_TITLES = [
   'Personal Information',
@@ -30,7 +31,8 @@ const STEP_TITLES = [
   'Head/Headache & Travel Anxiety Assessment',
   'Bruising/Scarring Assessment',
   'Other Injuries Assessment',
-  'Review & Submit'
+  'Additional Details',
+  'Preview & Submit'
 ];
 
 interface MultiStepQuestionnaireFormProps {
@@ -291,6 +293,8 @@ export default function MultiStepQuestionnaireForm({
         return <StepOtherInjuries {...stepProps} />;
       case 9:
         return <StepReview {...stepProps} />;
+      case 10:
+        return <StepPreviewSubmit {...stepProps} />;
       default:
         return null;
     }
@@ -368,13 +372,23 @@ export default function MultiStepQuestionnaireForm({
                 Next →
               </Button>
             ) : (
-              <Button
-                type="submit"
-                disabled={isSubmitting}
-                className="px-8"
-              >
-                {isSubmitting ? 'Submitting...' : 'Submit Questionnaire'}
-              </Button>
+              <div className="flex gap-3">
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={generatePDF}
+                  className="px-6"
+                >
+                  📄 Download PDF
+                </Button>
+                <Button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="px-8"
+                >
+                  {isSubmitting ? 'Submitting...' : 'Submit Questionnaire'}
+                </Button>
+              </div>
             )}
           </div>
         </Card>
