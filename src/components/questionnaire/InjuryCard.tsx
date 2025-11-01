@@ -1,6 +1,7 @@
 import React from 'react';
 import { AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Badge } from '@/components/ui/badge';
+import { cn } from '@/lib/utils';
 
 interface InjuryCardProps {
   value: string;
@@ -50,40 +51,40 @@ export const InjuryCard = ({ value, title, icon, initialSeverity, currentSeverit
   const status = getStatusBadge(initialSeverity, currentSeverity);
   
   return (
-    <AccordionItem value={value} className="border border-border rounded-lg px-4 bg-card">
-      <AccordionTrigger className="hover:no-underline py-4">
-        <div className="flex items-center gap-3 text-left w-full">
-          <span className="text-2xl">{icon}</span>
+    <AccordionItem value={value} className="border border-border rounded-lg px-3 bg-card">
+      <AccordionTrigger className="hover:no-underline py-3">
+        <div className="flex items-center gap-2 text-left w-full">
+          <span className="text-xl">{icon}</span>
           <div className="flex-1">
-            <h4 className="font-semibold text-base">{title}</h4>
-            <div className="flex gap-2 mt-1">
-              <Badge variant="outline" className={getSeverityColor(currentSeverity)}>
-                Current: {currentSeverity}
+            <h4 className="font-semibold text-sm">{title}</h4>
+            <div className="flex gap-1.5 mt-1">
+              <Badge variant="outline" className={cn(getSeverityColor(currentSeverity), "text-xs px-1.5 py-0")}>
+                {currentSeverity}
               </Badge>
-              <Badge variant="outline" className={status.color}>
+              <Badge variant="outline" className={cn(status.color, "text-xs px-1.5 py-0")}>
                 {status.text}
               </Badge>
             </div>
           </div>
         </div>
       </AccordionTrigger>
-      <AccordionContent className="pb-4">
-        <div className="space-y-3 pt-2">
-          <div className="grid grid-cols-2 gap-3">
+      <AccordionContent className="pb-3">
+        <div className="space-y-2 pt-1">
+          <div className="grid grid-cols-2 gap-2">
             <div>
-              <p className="text-sm text-muted-foreground">Initial Severity</p>
-              <Badge className={getSeverityColor(initialSeverity)}>{initialSeverity}</Badge>
+              <p className="text-xs text-muted-foreground">Initial</p>
+              <Badge className={cn(getSeverityColor(initialSeverity), "text-xs")}>{initialSeverity}</Badge>
             </div>
             <div>
-              <p className="text-sm text-muted-foreground">Current Severity</p>
-              <Badge className={getSeverityColor(currentSeverity)}>{currentSeverity}</Badge>
+              <p className="text-xs text-muted-foreground">Current</p>
+              <Badge className={cn(getSeverityColor(currentSeverity), "text-xs")}>{currentSeverity}</Badge>
             </div>
           </div>
           
           {details.length > 0 && (
-            <div className="space-y-2 pt-2 border-t border-border">
+            <div className="space-y-1.5 pt-1 border-t border-border">
               {details.map((detail, index) => (
-                <div key={index} className="flex justify-between text-sm">
+                <div key={index} className="flex justify-between text-xs">
                   <span className="text-muted-foreground">{detail.label}:</span>
                   <span className="font-medium">{detail.value}</span>
                 </div>

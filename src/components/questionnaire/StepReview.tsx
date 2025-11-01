@@ -15,10 +15,10 @@ interface StepReviewProps {
 
 export const StepReview = ({ formData, handleInputChange }: StepReviewProps) => {
   return (
-    <div className="space-y-8">
+    <div className="space-y-6">
       {/* Treatment Section */}
-      <div className="space-y-6">
-        <h3 className="text-lg font-semibold text-primary">Treatment Details</h3>
+      <div className="space-y-4">
+        <h3 className="text-base font-semibold text-primary">Treatment Details</h3>
         
         <FormField label="Did you receive any treatment at the scene of accident?" field="treatmentAtScene" required>
           <RadioGroup value={formData.treatmentAtScene || ''} onValueChange={(value) => handleInputChange('treatmentAtScene', value)} className="flex gap-4">
@@ -140,11 +140,11 @@ export const StepReview = ({ formData, handleInputChange }: StepReviewProps) => 
         </FormField>
       </div>
 
-      <Separator />
+      <Separator className="my-4" />
 
       {/* Impact on Life Section */}
-      <div className="space-y-6">
-        <h3 className="text-lg font-semibold text-primary">Impact on Life</h3>
+      <div className="space-y-4">
+        <h3 className="text-base font-semibold text-primary">Impact on Life</h3>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           <FormField label="How many days did you take off work because of the accident?" field="daysOffWork" required>
@@ -282,11 +282,11 @@ export const StepReview = ({ formData, handleInputChange }: StepReviewProps) => 
         </div>
       </div>
 
-      <Separator />
+      <Separator className="my-4" />
 
       {/* Previous Medical History Section */}
-      <div className="space-y-6">
-        <h3 className="text-lg font-semibold text-primary">Previous Medical History</h3>
+      <div className="space-y-4">
+        <h3 className="text-base font-semibold text-primary">Previous Medical History</h3>
         
         <FormField label="Did you have previous road traffic accident?" field="previousAccident" required>
           <RadioGroup value={formData.previousAccident || ''} onValueChange={(value) => handleInputChange('previousAccident', value)} className="flex gap-4">

@@ -14,10 +14,10 @@ interface StepHeadacheProps {
 
 export const StepHeadache = ({ formData, handleInputChange }: StepHeadacheProps) => {
   return (
-    <div className="space-y-8">
+    <div className="space-y-6">
       {/* Headache Section */}
-      <div className="space-y-6">
-        <h3 className="text-lg font-semibold text-primary">Headache Assessment</h3>
+      <div className="space-y-4">
+        <h3 className="text-base font-semibold text-primary">Headache Assessment</h3>
         
         <FormField label="Did you get any headache?" field="headache" required>
           <RadioGroup value={formData.headache || ''} onValueChange={(value) => handleInputChange('headache', value)} className="flex gap-4">
@@ -102,11 +102,11 @@ export const StepHeadache = ({ formData, handleInputChange }: StepHeadacheProps)
         )}
       </div>
 
-      <Separator />
+      <Separator className="my-4" />
 
       {/* Travel Anxiety Section */}
-      <div className="space-y-6">
-        <h3 className="text-lg font-semibold text-primary">Travel Anxiety Assessment</h3>
+      <div className="space-y-4">
+        <h3 className="text-base font-semibold text-primary">Travel Anxiety Assessment</h3>
         
         <FormField label="Did you experience travel anxiety, fear of travelling after the accident?" field="travelAnxiety" required>
           <RadioGroup value={formData.travelAnxiety || ''} onValueChange={(value) => handleInputChange('travelAnxiety', value)} className="flex gap-4">

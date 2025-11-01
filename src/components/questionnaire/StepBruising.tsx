@@ -13,7 +13,7 @@ interface StepBruisingProps {
 
 export const StepBruising = ({ formData, handleInputChange }: StepBruisingProps) => {
   return (
-    <div className="space-y-6">
+    <div className="space-y-4">
       <FormField label="Is there any bruising or scarring on the body due to this accident?" field="bruising" required>
         <RadioGroup value={formData.bruising || ''} onValueChange={(value) => handleInputChange('bruising', value)} className="flex gap-4">
           <div className="flex items-center space-x-2">

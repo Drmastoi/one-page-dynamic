@@ -9,10 +9,10 @@ interface FormFieldProps {
 }
 
 export const FormField = ({ label, field, required = false, children }: FormFieldProps) => (
-  <div className="space-y-2">
-    <Label className="text-form-label font-medium">
+  <div className="space-y-1.5">
+    <Label className="text-sm font-medium">
       {label}
-      {required && <span className="text-form-required ml-1">*</span>}
+      {required && <span className="text-destructive ml-1">*</span>}
     </Label>
     {children}
   </div>

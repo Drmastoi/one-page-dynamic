@@ -33,13 +33,13 @@ export const StepPreviewSubmit = ({ formData }: StepPreviewSubmitProps) => {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4">
       {/* Quick Summary */}
-      <Card className="p-5 bg-accent/10 border-accent">
-        <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
+      <Card className="p-4 bg-accent/10 border-accent">
+        <h3 className="text-base font-semibold mb-2 flex items-center gap-2">
           📋 Quick Summary
         </h3>
-        <div className="grid md:grid-cols-2 gap-3 text-sm">
+        <div className="grid md:grid-cols-2 gap-2 text-sm">
           <div>
             <span className="text-muted-foreground">Name:</span>{' '}
             <span className="font-medium">{formData.fullName || 'N/A'}</span>
@@ -61,15 +61,15 @@ export const StepPreviewSubmit = ({ formData }: StepPreviewSubmitProps) => {
 
       {/* Injuries Summary */}
       {injuries > 0 && (
-        <div className="space-y-4">
+        <div className="space-y-3">
           <div>
-            <h3 className="text-xl font-semibold mb-1">Your Reported Injuries</h3>
-            <p className="text-sm text-muted-foreground">
-              Review the details of each injury. Click on any injury to see more information.
+            <h3 className="text-base font-semibold mb-1">Your Reported Injuries</h3>
+            <p className="text-xs text-muted-foreground">
+              Click on any injury to see more information.
             </p>
           </div>
 
-          <Accordion type="single" collapsible className="space-y-3">
+          <Accordion type="single" collapsible className="space-y-2">
             {formData.neckPain === 'yes' && (
               <InjuryCard
                 value="neck"
@@ -232,20 +232,20 @@ export const StepPreviewSubmit = ({ formData }: StepPreviewSubmitProps) => {
       )}
 
       {injuries === 0 && (
-        <Card className="p-6 text-center">
-          <p className="text-muted-foreground">No injuries reported</p>
+        <Card className="p-4 text-center">
+          <p className="text-sm text-muted-foreground">No injuries reported</p>
         </Card>
       )}
 
-      <Separator />
+      <Separator className="my-4" />
 
       {/* Treatment Summary */}
       {(formData.wentToAE === 'yes' || formData.wentToGP === 'yes' || formData.treatmentAtScene === 'yes') && (
-        <Card className="p-5 bg-card">
-          <h4 className="font-semibold mb-3 flex items-center gap-2">
+        <Card className="p-4 bg-card">
+          <h4 className="text-sm font-semibold mb-2 flex items-center gap-2">
             💊 Treatment Summary
           </h4>
-          <ul className="space-y-1.5 text-sm">
+          <ul className="space-y-1 text-xs">
             {formData.treatmentAtScene === 'yes' && <li className="flex items-center gap-2">✓ Treatment at scene</li>}
             {formData.wentToAE === 'yes' && (
               <li className="flex items-center gap-2">
@@ -273,8 +273,8 @@ export const StepPreviewSubmit = ({ formData }: StepPreviewSubmitProps) => {
 
       {/* Final Notice */}
       <Alert>
-        <AlertDescription>
-          <strong>Please review all your answers carefully.</strong> Once submitted, you'll receive a confirmation email with a copy of your questionnaire.
+        <AlertDescription className="text-xs">
+          <strong>Review carefully.</strong> You'll receive a confirmation email after submission.
         </AlertDescription>
       </Alert>
     </div>

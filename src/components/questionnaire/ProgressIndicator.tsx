@@ -11,18 +11,14 @@ export const ProgressIndicator = ({ currentStep, totalSteps, stepTitle }: Progre
   const progress = (currentStep / totalSteps) * 100;
 
   return (
-    <div className="mb-8 space-y-4">
-      <div className="flex items-center justify-between">
-        <h2 className="text-xl sm:text-2xl font-semibold text-primary">{stepTitle}</h2>
-        <span className="text-sm font-medium text-muted-foreground">
-          Step {currentStep} of {totalSteps}
+    <div className="mb-4">
+      <div className="flex justify-between items-center mb-2">
+        <h2 className="text-base sm:text-lg font-semibold text-primary">{stepTitle}</h2>
+        <span className="text-xs text-muted-foreground font-medium">
+          {currentStep}/{totalSteps}
         </span>
       </div>
-      <Progress value={progress} className="h-2" />
-      <div className="flex justify-between text-xs text-muted-foreground">
-        <span>{Math.round(progress)}% Complete</span>
-        <span>{totalSteps - currentStep} steps remaining</span>
-      </div>
+      <Progress value={progress} className="h-1.5" />
     </div>
   );
 };

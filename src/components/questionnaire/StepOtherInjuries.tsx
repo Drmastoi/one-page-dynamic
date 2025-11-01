@@ -12,7 +12,7 @@ interface StepOtherInjuriesProps {
 
 export const StepOtherInjuries = ({ formData, handleInputChange }: StepOtherInjuriesProps) => {
   return (
-    <div className="space-y-6">
+    <div className="space-y-4">
       <FormField label="Any other injury?" field="otherInjury" required>
         <RadioGroup value={formData.otherInjury || ''} onValueChange={(value) => handleInputChange('otherInjury', value)} className="flex gap-4">
           <div className="flex items-center space-x-2">

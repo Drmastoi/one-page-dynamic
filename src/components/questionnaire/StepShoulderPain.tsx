@@ -12,7 +12,7 @@ interface StepShoulderPainProps {
 
 export const StepShoulderPain = ({ formData, handleInputChange }: StepShoulderPainProps) => {
   return (
-    <div className="space-y-6">
+    <div className="space-y-4">
       <FormField label="Did you get any shoulder pain?" field="shoulderPain" required>
         <RadioGroup value={formData.shoulderPain || ''} onValueChange={(value) => handleInputChange('shoulderPain', value)} className="flex gap-4">
           <div className="flex items-center space-x-2">

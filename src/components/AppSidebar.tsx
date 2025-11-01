@@ -48,17 +48,17 @@ export function AppSidebar({ currentStep, onStepChange }: AppSidebarProps) {
     <Sidebar collapsible="icon" className="border-r border-white/20">
       <SidebarContent className="bg-black/40 backdrop-blur-2xl">
         <SidebarGroup>
-          <SidebarGroupLabel className="text-white/85 font-semibold">
-            {!isCollapsed && 'Questionnaire Steps'}
+          <SidebarGroupLabel className="text-white/85 font-semibold text-xs px-2 py-2">
+            {!isCollapsed && 'Steps'}
           </SidebarGroupLabel>
           <SidebarGroupContent>
-            <SidebarMenu>
+            <SidebarMenu className="gap-0.5">
               {navItems.map((item) => (
                 <SidebarMenuItem key={item.number}>
                   <SidebarMenuButton
                     onClick={() => handleStepClick(item.number)}
                     className={cn(
-                      'transition-all duration-200',
+                      'transition-all duration-200 h-9 px-2',
                       currentStep === item.number
                         ? 'bg-teal-500 text-white hover:bg-teal-600 font-medium'
                         : 'text-white/85 hover:bg-white/20 hover:text-white'
@@ -67,7 +67,7 @@ export function AppSidebar({ currentStep, onStepChange }: AppSidebarProps) {
                   >
                     <div
                       className={cn(
-                        'w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold transition-colors flex-shrink-0',
+                        'w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold transition-colors flex-shrink-0',
                         currentStep === item.number
                           ? 'bg-white text-teal-600'
                           : 'bg-white/25 text-white'
@@ -76,7 +76,7 @@ export function AppSidebar({ currentStep, onStepChange }: AppSidebarProps) {
                       {item.number}
                     </div>
                     {!isCollapsed && (
-                      <span className="text-sm">{item.title}</span>
+                      <span className="text-xs">{item.title}</span>
                     )}
                   </SidebarMenuButton>
                 </SidebarMenuItem>

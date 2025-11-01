@@ -318,38 +318,25 @@ export default function MultiStepQuestionnaireForm({
       </AlertDialog>
 
       <form onSubmit={handleSubmit}>
-        <Card className="p-6 sm:p-8 bg-form-section border-form-section-border">
+        <Card className="p-4 sm:p-6 bg-form-section border-form-section-border shadow-sm">
           <ProgressIndicator 
             currentStep={currentStep} 
             totalSteps={TOTAL_STEPS} 
             stepTitle={STEP_TITLES[currentStep - 1]} 
           />
 
-          <div className="animate-fade-in">
+          <div className="animate-fade-in mt-4">
             {renderStep()}
           </div>
 
-          {currentStep === TOTAL_STEPS && Object.keys(formData).length > 0 && (
-            <div className="mt-6 pt-6 border-t border-border">
-              <Button
-                type="button"
-                variant="outline"
-                onClick={generatePDF}
-                className="w-full sm:w-auto"
-              >
-                📄 Download PDF Copy
-              </Button>
-            </div>
-          )}
-
-          <div className="flex flex-col sm:flex-row justify-between gap-3 mt-8 pt-6 border-t border-border">
-            <div className="flex gap-3">
+          <div className="flex flex-col sm:flex-row justify-between gap-2 mt-6 pt-4 border-t border-border">
+            <div className="flex gap-2">
               <Button
                 type="button"
                 variant="outline"
                 onClick={handlePrevious}
                 disabled={currentStep === 1}
-                className="px-6"
+                className="px-4 h-9 text-sm"
               >
                 ← Previous
               </Button>
@@ -357,9 +344,9 @@ export default function MultiStepQuestionnaireForm({
                 type="button"
                 variant="ghost"
                 onClick={handleSaveAndExit}
-                className="px-4"
+                className="px-3 h-9 text-sm"
               >
-                💾 Save & Exit
+                💾 Save
               </Button>
             </div>
 
@@ -367,26 +354,26 @@ export default function MultiStepQuestionnaireForm({
               <Button
                 type="button"
                 onClick={handleNext}
-                className="px-6"
+                className="px-6 h-9 text-sm"
               >
                 Next →
               </Button>
             ) : (
-              <div className="flex gap-3">
+              <div className="flex gap-2">
                 <Button
                   type="button"
                   variant="outline"
                   onClick={generatePDF}
-                  className="px-6"
+                  className="px-4 h-9 text-sm"
                 >
-                  📄 Download PDF
+                  📄 PDF
                 </Button>
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="px-8"
+                  className="px-6 h-9 text-sm"
                 >
-                  {isSubmitting ? 'Submitting...' : 'Submit Questionnaire'}
+                  {isSubmitting ? 'Submitting...' : 'Submit'}
                 </Button>
               </div>
             )}

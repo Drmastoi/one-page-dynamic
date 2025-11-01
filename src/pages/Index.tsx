@@ -2,6 +2,7 @@ import { useState } from 'react';
 import MultiStepQuestionnaireForm from '@/components/MultiStepQuestionnaireForm';
 import { AppSidebar } from '@/components/AppSidebar';
 import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 import { useIsMobile } from '@/hooks/use-mobile';
 
 const Index = () => {
@@ -23,33 +24,27 @@ const Index = () => {
 
         <main className="flex-1 relative z-10 overflow-x-hidden">
           {/* Header with sidebar trigger */}
-          <div className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border px-4 py-3 shadow-sm">
-            <div className="flex items-center gap-3">
+          <div className="sticky top-0 z-50 bg-background/95 backdrop-blur-md border-b border-border px-3 py-2.5 shadow-sm">
+            <div className="flex items-center gap-2">
               <SidebarTrigger />
-              <h1 className="text-xl md:text-2xl font-bold text-primary">
+              <h1 className="text-lg md:text-xl font-semibold text-primary">
                 Personal Injury Questionnaire
               </h1>
             </div>
           </div>
 
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
-            <header className="text-center mb-8 sm:mb-12">
-              <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
-                Please complete all sections of this questionnaire accurately. Your responses will help us understand the full impact of your accident and injuries.
-              </p>
-              <div className="mt-6 p-3 sm:p-4 bg-accent/50 rounded-lg border border-accent">
-                <p className="text-sm text-accent-foreground">
-                  <strong>Note:</strong> All fields marked with <span className="text-form-required">*</span> are required. 
-                  Please ensure all information is accurate and complete before submission.
-                </p>
-              </div>
-            </header>
+          <div className="max-w-4xl mx-auto px-3 sm:px-4 py-4 sm:py-6">
+            <Alert className="mb-4">
+              <AlertDescription className="text-xs">
+                <strong>Note:</strong> Fields marked <span className="text-destructive">*</span> are required. Complete accurately for proper assessment.
+              </AlertDescription>
+            </Alert>
 
             <MultiStepQuestionnaireForm currentStep={currentStep} setCurrentStep={setCurrentStep} />
 
-            <footer className="text-center mt-12 sm:mt-16 py-6 sm:py-8 border-t border-border">
-              <p className="text-sm text-muted-foreground">
-                This questionnaire is confidential and will be submitted securely to our medical assessment team.
+            <footer className="text-center mt-6 pt-4 border-t border-border">
+              <p className="text-xs text-muted-foreground">
+                Confidential & Secure Submission
               </p>
             </footer>
           </div>

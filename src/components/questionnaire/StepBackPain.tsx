@@ -12,7 +12,7 @@ interface StepBackPainProps {
 
 export const StepBackPain = ({ formData, handleInputChange }: StepBackPainProps) => {
   return (
-    <div className="space-y-6">
+    <div className="space-y-4">
       <FormField label="Did you get any back pain?" field="backPain" required>
         <RadioGroup value={formData.backPain || ''} onValueChange={(value) => handleInputChange('backPain', value)} className="flex gap-4">
           <div className="flex items-center space-x-2">
